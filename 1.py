@@ -97,24 +97,6 @@ def main():
             accumulated_content += "\n\n" + section_content
             st.write(section_content)
 
-        # SEO optimization
-        seo_prompt = "Please rewrite the following content as an SEO-specialist:\n" + accumulated_content
-        seo_rewritten_content = generate_content(seo_prompt)
-        st.write("### SEO-Optimized Content")
-        st.write(seo_rewritten_content)
-
-        # File download
-        html_content = markdown.markdown(seo_rewritten_content)
-        with open("output_article_seo.html", "w", encoding="utf-8") as file:
-            file.write(html_content)
-
-        def get_html_download_link(html_string, filename):
-            b64 = base64.b64encode(html_string.encode()).decode()
-            return f'<strong><a href="data:text/html;base64,{b64}" download="{filename}">Download file</a></strong>'
-
-        download_link = get_html_download_link(html_content, "output_article_seo.html")
-        st.markdown(download_link, unsafe_allow_html=True)
-
         # Display counts
         word_count, char_count = compute_counts(accumulated_content)
         st.sidebar.text(f"Total Word Count: {word_count}")
