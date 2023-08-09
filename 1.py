@@ -17,9 +17,10 @@ VERSIONS = {
     "1.0.1": "Added H2 headers feature.",
     "1.0.2": "Fixed bug with content generation.",
     "1.0.3": "Added version changes."
+    "1.0.4": "Added new prompts"
 }
 # Added app version
-APP_VERSION = "1.0.3"
+APP_VERSION = "1.0.4"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -39,10 +40,10 @@ language = st.selectbox("Choose a language:", ["English", "Swedish"])
 if language == "English":
     title_prompt = "Write a comprehensive, SEO-optimized article '{title}', providing a detailed overview. Never write a summary or conclusion. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Don't write a conclusion. -conclusion"
     h2_prompt = "Write a short SEO-optimized paragraph about '{h2_header}'. Never write a summary or conclusion. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
-    summary_table_prompt = "Based on the provided content, create a concise summary table highlighting key points, make sure it's a table. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
-    introduction_prompt = "Write a short introduction paragraph for the content above, start with a question, and focus on the benefit. content provided here. Avoid duplicated content. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write a conclusion."
-    conclusion_prompt = "Conclude the article, summarizing the main insights about the topic but never include the words conclusion or summarize in the first sentence. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
-    faq_prompt = "Generate frequently asked questions related to the content with answers. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
+    summary_table_prompt = "Based on the provided content, create a concise summary table or a list, make sure it's a table or a list. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
+    introduction_prompt = "Write a short introduction paragraph for the content above, start with a question, and focus on the benefit. Avoid duplicated content. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write a conclusion."
+    conclusion_prompt = "Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Summarize the following content in 3 bullet points."
+    faq_prompt = "Generate an FAQ of 5 questions based on the above content. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
 elif language == "Swedish":
     title_prompt = "Skriv en heltäckande, SEO-optimerad artikel '{title}', som ger en detaljerad översikt. Skriv aldrig en sammanfattning eller slutsats. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv inte en slutsats. -slutsats"
     h2_prompt = "Skriv ett kort, SEO-optimerat stycke om '{h2_header}'. Skriv aldrig en sammanfattning eller slutsats. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
