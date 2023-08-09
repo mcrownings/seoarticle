@@ -99,6 +99,9 @@ def main():
     if st.button("Generate Content"):
         accumulated_content = ""
 
+        # Debug: Display accumulated_content
+        st.write(f"Accumulated Content:\n{accumulated_content}")
+
         # Generate content for the title using predefined prompt
         prompt = title_prompt.format(title=title)
         title_content = generate_content(prompt, keywords=keywords)
@@ -107,30 +110,48 @@ def main():
 
         for h2_header in h2_headers_inputs:
             if h2_header:
+                # Debug: Display accumulated_content
+                st.write(f"Accumulated Content:\n{accumulated_content}")
+
                 prompt = h2_prompt.format(h2_header=h2_header)
                 h2_content = generate_content(prompt, accumulated_content, keywords=keywords)
                 st.write(f"### {h2_header}\n\n{h2_content}")
                 accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
+
+        # Debug: Display accumulated_content
+        st.write(f"Accumulated Content:\n{accumulated_content}")
 
         # 3. Generate a summary table for the content using predefined prompt.
         summary_table = generate_content(summary_table_prompt, accumulated_content)
         st.write(summary_table)
         accumulated_content += "\n\n" + summary_table
 
+        # Debug: Display accumulated_content
+        st.write(f"Accumulated Content:\n{accumulated_content}")
+
         # 4. Generate an introduction section using predefined prompt.
         introduction = generate_content(introduction_prompt, accumulated_content)
         st.write(f"## Introduction\n\n{introduction}")
         accumulated_content += "\n\n" + introduction
+
+        # Debug: Display accumulated_content
+        st.write(f"Accumulated Content:\n{accumulated_content}")
 
         # 5. Generate a conclusion section using predefined prompt.
         conclusion = generate_content(conclusion_prompt, accumulated_content)
         st.write(f"## Conclusion\n\n{conclusion}")
         accumulated_content += "\n\n" + conclusion
 
+        # Debug: Display accumulated_content
+        st.write(f"Accumulated Content:\n{accumulated_content}")
+
         # 6. Generate FAQ section using predefined prompt.
         faq = generate_content(faq_prompt, accumulated_content)
         st.write(f"## Frequently Asked Questions\n\n{faq}")
         accumulated_content += "\n\n" + faq
+
+        # Debug: Display accumulated_content
+        st.write(f"Accumulated Content:\n{accumulated_content}")
 
         # Compute word and character counts for the accumulated content
         word_count, char_count = compute_counts(accumulated_content)
