@@ -17,17 +17,17 @@ VERSIONS = {
     "1.0.1": "Added H2 headers feature.",
     "1.0.2": "Fixed bug with content generation.",
     "1.0.3": "Added version changes.",
-    "1.0.4": "Added new prompts"
+    "1.0.4": "Added new prompts.",
+    "1.0.5": "Added keywords-field."
 }
 # Added app version
-APP_VERSION = "1.0.4"
+APP_VERSION = "1.0.5"
 
 def display_versions():
     st.sidebar.title("Version Changes")
     for version, description in VERSIONS.items():
         st.sidebar.text(f"Version {version}:")
         st.sidebar.text(description)
-        st.sidebar.text("------")
 
 # Added word and character count
 def compute_counts(text):
@@ -53,11 +53,11 @@ elif language == "Swedish":
     faq_prompt = "Generera vanligt förekommande frågor relaterade till innehållet med svar. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
 
 
-def generate_content(prompt, previous_content="", language="English"):
+def generate_content(prompt, previous_content="", language="English", keywords=""):
     # Initial message for GPT
     initial_message = {
         "role": "user",
-        "content": "These keywords are important for you to know when writing: best dry dog food, dog food reviews, dog food ratings, the vet recommended dog food, dog food brands to avoid. Include one keyword per H2 heading and insert in the first paragraph, following the heading where the keyword has been used."
+        "content": "These keywords are important for you to know when writing: {keywords}. Include one keyword per H2 heading and insert in the first paragraph, following the heading where the keyword has been used."
     }
 
     # Set the system message based on the chosen language
@@ -87,6 +87,10 @@ def main():
     # User provides a title.
     title = st.text_input("Enter a title:")
 
+    # User provides important keywords.
+    keywords = st.text_input("Enter a list of keywords separated with comma:")
+
+
     # Let the user decide how many H2 sections they want to add
     num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", 1, 5, 1)
 
@@ -99,7 +103,7 @@ def main():
 
         # Generate content for the title using predefined prompt
         prompt = title_prompt.format(title=title)
-        title_content = generate_content(prompt)
+        title_content = generate_content(prompt, keywords=keywords)
         st.write(f"## {title}\n\n{title_content}")
         accumulated_content += f"## {title}\n\n{title_content}"
 
