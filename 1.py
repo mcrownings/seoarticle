@@ -40,20 +40,18 @@ def get_prompts(language):
         }
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
-
-    initial_message = {
-        "role": "user",
-        "content": f"These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them."
-    }
-
+    
+    # Integrate the importance of keywords into the main prompt
+    prompt_with_keywords = f"These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them.\n\n{prompt}"
+    
     if language == "English":
         system_message = {"role": "system", "content": "Craft detailed, engaging, and SEO-optimized content. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write conclusions."}
     elif language == "Swedish":
         system_message = {"role": "system", "content": "Skriv allt på svenska. Du är en kunnig SEO-skribent. Skapa detaljerat, engagerande och SEO-optimerat innehåll. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv aldrig slutsatser."}
     
-    user_message = {"role": "user", "content": prompt}
+    user_message = {"role": "user", "content": prompt_with_keywords}
     
-    messages = [initial_message, system_message]
+    messages = [system_message]
     if previous_content:
         messages.append({"role": "user", "content": previous_content})
     messages.append(user_message)
