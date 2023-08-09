@@ -6,9 +6,9 @@ import markdown
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 VERSIONS = {
-    "1.0.6": "Added important keywords."
+    "1.2": "Refactored code, added keywords and new prompts."
 }
-APP_VERSION = "1.0.6"
+APP_VERSION = "1.2"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -22,12 +22,12 @@ def compute_counts(text):
 def get_prompts(language):
     if language == "English":
         return {
-            "title_prompt": "Craft a detailed SEO-optimized article on the topic '{title}', ensuring the content is presented in the first person singular (I, me, my, mine). The narrative should be concise, devoid of extraneous adjectives, and phrases such as 'overall', 'nutshell', and 'conclusion'. Maintain a confident, informed, neutral, and lucid tone throughout. Refrain from adding any concluding remarks.",
-            "h2_prompt": "Compose an SEO-enhanced paragraph centered on the topic '{h2_header}'. The content should strictly be in the first person singular (I, me, my, mine) and be concise. Exclude superfluous adjectives and avoid phrases like 'overall', 'nutshell', and 'conclusion'. The narrative tone should exude confidence, expertise, neutrality, and clarity.",
-            "summary_table_prompt": "Using the given data, craft a Markdown table that includes a minimum of two columns and an appropriate number of rows. Refrain from using extraneous adjectives and phrases such as 'overall', 'nutshell', and 'conclusion'. The narrative should convey confidence, expertise, neutrality, and clarity.",
-            "introduction_prompt": "Write a short introduction paragraph for the content above, start with a question, and focus on the benefit. Avoid duplicated content. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write a conclusion.",
-            "conclusion_prompt": "Summarize the provided content in 3 bullet points. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice.",
-            "faq_prompt": "Generate an FAQ of 5 questions based on the above content. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
+            "title_prompt": "Craft a detailed SEO-optimized article on the topic '{title}'.The narrative should be concise, devoid of extraneous adjectives, and phrases such as 'overall', 'nutshell', and 'conclusion'. Maintain a confident, informed, neutral, and lucid tone throughout.",
+            "h2_prompt": "Compose an SEO-enhanced paragraph centered on the topic '{h2_header}'. Exclude superfluous adjectives and avoid phrases like 'overall', 'nutshell', and 'conclusion'. The narrative tone should exude confidence, expertise, neutrality, and clarity.",
+            "summary_table_prompt": "Using the given data, craft a Markdown table that includes a minimum of two columns and an appropriate number of rows. The narrative should convey confidence, expertise, neutrality, and clarity.",
+            "introduction_prompt": "Write a short introduction paragraph for the content above, start with a question, and focus on the benefit. You should speak with a confident, knowledgeable, neutral and clear tone of voice.",
+            "conclusion_prompt": "Summarize the provided content in 3 bullet points. You should speak with a confident, knowledgeable, neutral and clear tone of voice.",
+            "faq_prompt": "Generate an FAQ of 5 questions based on the above content. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
         }
     elif language == "Swedish":
         return {
@@ -39,9 +39,6 @@ def get_prompts(language):
             "faq_prompt": "Generera vanligt förekommande frågor relaterade till innehållet med svar. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
         }
 
-
-#language = st.selectbox("Choose a language:", ["English", "Swedish"])
-
 def generate_content(prompt, previous_content="", language="English", keywords=""):
 
     initial_message = {
@@ -52,7 +49,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     if language == "English":
         system_message = {"role": "system", "content": "Craft detailed, engaging, and SEO-optimized content. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write conclusions."}
     elif language == "Swedish":
-        system_message = {"role": "system", "content": "Skriv allt på svenska. Du är en kunnig skribent. Skapa detaljerat, engagerande och SEO-optimerat innehåll. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv aldrig slutsatser."}
+        system_message = {"role": "system", "content": "Skriv allt på svenska. Du är en kunnig SEO-skribent. Skapa detaljerat, engagerande och SEO-optimerat innehåll. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv aldrig slutsatser."}
     
     user_message = {"role": "user", "content": prompt}
     
