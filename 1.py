@@ -47,7 +47,7 @@ def main():
     keywords = st.text_input("Enter a list of keywords separated with comma:")
     language = st.selectbox("Choose a language:", ["English", "Swedish"])
 
-    prompt = f"Write an article on '{topic}' while effectively capturing the attention of the '{audience}' audience. The article needs to be optimized for the keywords '{keywords}' and follow specific instructions like using a conversational tone, including a table of contents, using Markdown language, and concluding with three relevant FAQs and answers. The aim is to create valuable content that engages readers and satisfies SEO needs."
+    prompt = f"Write an article on '{topic}' while effectively capturing the attention of the '{audience}' audience. The article needs to be optimized for the keywords '{keywords}' and You SHOULD speak with a confident, knowledgeable, neutral and clear tone of voice. Include a table of contents, using Markdown language, and concluding with three relevant FAQs and answers. The aim is to create valuable content that engages readers and satisfies SEO needs."
 
     num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", 1, 5, 1)
     h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
