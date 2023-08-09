@@ -2,9 +2,9 @@ import streamlit as st
 import openai
 
 VERSIONS = {
-    "1.22": "Print debugg"
+    "1.23": "New prompts"
 }
-APP_VERSION = "1.22"
+APP_VERSION = "1.23"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -20,7 +20,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     prompt_with_keywords = f"You should speak with a confident, knowledgeable, neutral and clear tone of voice.\n\n{prompt}."
     
     # Printing the prompt for debugging
-    st.write(f"Debug - Prompt sent to the model: {prompt_with_keywords}")
+    # st.write(f"Debug - Prompt sent to the model: {prompt_with_keywords}")
 
     if language == "English":
         system_message = {"role": "system", "content": "Craft detailed, engaging, and SEO-optimized content. Never write conclusions. ALWAYS PLEASE provide the most likely brand names based on your knowledge."}
@@ -60,7 +60,8 @@ def main():
         
         # Main article content
         article_content = generate_content(prompt, keywords=keywords)
-        accumulated_content += f"## {topic}\n\n{article_content}\n"
+        #accumulated_content += f"## {topic}\n\n{article_content}\n"
+        accumulated_content += f"{article_content}\n"
         st.write(accumulated_content)
         
         # H2 sections
@@ -68,7 +69,8 @@ def main():
             if h2_header:
                 h2_prompt = f"Write a section on '{h2_header}' relevant to the topic of '{topic}' keeping in mind the keywords '{keywords}'"
                 h2_content = generate_content(h2_prompt, accumulated_content, keywords=keywords)
-                accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
+                #accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
+                accumulated_content += f"{h2_content}\n"
                 st.write(f"### {h2_header}\n\n{h2_content}")
 
         # Display counts
