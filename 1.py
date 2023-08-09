@@ -13,7 +13,7 @@ import markdown
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 # Added app version
-APP_VERSION = "1.0.1"
+APP_VERSION = "1.0.2"
 
 # Added word and character count
 def compute_counts(text):
@@ -84,7 +84,7 @@ def main():
         accumulated_content += f"## {title}\n\n{title_content}"
 
         # Let the user decide how many H2 sections they want to add
-        num_h2_sections = st.sidebar.slider("How many H2 sections would you like to add?", 1, 5, 1)
+    num_h2_sections = st.sidebar.slider("How many H2 sections would you like to add?", 1, 5, 1)
 
     for i in range(num_h2_sections):
         # 2. User provides an H2 header.
