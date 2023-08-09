@@ -20,7 +20,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     prompt_with_keywords = f"These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them.\n\n{prompt}"
     
     if language == "English":
-        system_message = {"role": "system", "content": "Craft detailed, engaging, and SEO-optimized content. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write conclusions. ALWAYS include relevant brand names wherever appropriate."}
+        system_message = {"role": "system", "content": "Craft detailed, engaging, and SEO-optimized content. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write conclusions. ALWAYS include relevant brand names when refering to a brand."}
     else:
         system_message = {"role": "system", "content": "Skriv allt på svenska. Du är en kunnig SEO-skribent. Skapa detaljerat, engagerande och SEO-optimerat innehåll. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv aldrig slutsatser."}
     
@@ -47,7 +47,7 @@ def main():
     keywords = st.text_input("Enter a list of keywords separated with comma:")
     language = st.selectbox("Choose a language:", ["English", "Swedish"])
 
-    prompt = f"Write an article on '{topic}' while effectively capturing the attention of the '{audience}' audience. The article needs to be optimized for the keywords '{keywords}' and You SHOULD speak with a confident, knowledgeable, neutral and clear tone of voice. Include a table of contents, using Markdown language, and concluding with three relevant FAQs and answers. The aim is to create valuable content that engages readers and satisfies SEO needs."
+    prompt = f"Write an article on '{topic}' while effectively capturing the attention of the '{audience}' audience. The article needs to be optimized for the keywords '{keywords}' and You SHOULD speak with a confident, knowledgeable, neutral and clear tone of voice. Include a table of contents, using Markdown language, and concluding with three relevant FAQs and answers. The aim is to create valuable content that engages readers and satisfies SEO needs. ALWAYS include relevant brand names when refering to a brand."
 
     num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", 1, 5, 1)
     h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
