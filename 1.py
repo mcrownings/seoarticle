@@ -79,7 +79,7 @@ def main():
     num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", 1, 5, 1)
 
     # Create a list to store all H2 headers
-    h2_headers = [st.text_input(f"Enter headline #{i+1}:") for i in range(num_h2_sections)]
+    h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
 
     # Generate Content button
     if st.button("Generate Content"):
@@ -91,7 +91,7 @@ def main():
         st.write(f"## {title}\n\n{title_content}")
         accumulated_content += f"## {title}\n\n{title_content}"
 
-        for h2_header in h2_headers:
+        for h2_header in h2_headers_inputs:
             if h2_header:  # check if the user has entered something
                 # Generate content for H2 header using predefined prompt
                 prompt = h2_prompt.format(h2_header=h2_header)
