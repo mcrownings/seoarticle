@@ -57,7 +57,7 @@ def generate_content(prompt, previous_content="", language="English"):
     # Initial message for GPT
     initial_message = {
         "role": "user",
-        "content": "These keywords are important for you to know when writing: best dry dog food, dog food reviews, dog food ratings, the vet recommended dog food, dog food brands to avoid."
+        "content": "These keywords are important for you to know when writing: best dry dog food, dog food reviews, dog food ratings, the vet recommended dog food, dog food brands to avoid. Include one keyword per H2 heading and insert in the first paragraph, following the heading where the keyword has been used."
     }
 
     # Set the system message based on the chosen language
