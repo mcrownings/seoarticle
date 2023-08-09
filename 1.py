@@ -12,8 +12,21 @@ import markdown
 #openai.api_key = os.getenv('OPENAI_API_KEY')
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
+VERSIONS = {
+    "1.0.0": "Initial release.",
+    "1.0.1": "Added H2 headers feature.",
+    "1.0.2": "Fixed bug with content generation.",
+    "1.0.3": "Added version changes."
+}
 # Added app version
-APP_VERSION = "1.0.2"
+APP_VERSION = "1.0.3"
+
+def display_versions():
+    st.sidebar.title("Version Changes")
+    for version, description in VERSIONS.items():
+        st.sidebar.text(f"Version {version}:")
+        st.sidebar.text(description)
+        st.sidebar.text("------")
 
 # Added word and character count
 def compute_counts(text):
@@ -23,19 +36,11 @@ def compute_counts(text):
 
 language = st.selectbox("Choose a language:", ["English", "Swedish"])
 
-# Predefined prompts for each section
-# title_prompt = "Write a comprehensive, SEO-optimized article '{title}', providing a detailed overview. Never write a summary or conclusion. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Don't write a conclusion. -conclusion"
-# h2_prompt = "Write a short SEO-optimized paragraph about '{h2_header}'. Never write a summary or conclusion. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
-# summary_table_prompt = "Based on the provided content, create a concise summary table highlighting key points, make sure it's a table. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
-# introduction_prompt = "Write a short, personal and engaging introduction to the content provided here. Avoid duplicated content. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write a conclusion."
-# conclusion_prompt = "Conclude the article, summarizing the main insights about the topic but never include the words conclusion or summarize in the first sentence. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
-# faq_prompt = "Generate frequently asked questions related to the content with answers. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
-
 if language == "English":
     title_prompt = "Write a comprehensive, SEO-optimized article '{title}', providing a detailed overview. Never write a summary or conclusion. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Don't write a conclusion. -conclusion"
     h2_prompt = "Write a short SEO-optimized paragraph about '{h2_header}'. Never write a summary or conclusion. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
     summary_table_prompt = "Based on the provided content, create a concise summary table highlighting key points, make sure it's a table. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
-    introduction_prompt = "Write a short, personal and engaging introduction to the content provided here. Avoid duplicated content. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write a conclusion."
+    introduction_prompt = "Write a short introduction paragraph for the content above, start with a question, and focus on the benefit. content provided here. Avoid duplicated content. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write a conclusion."
     conclusion_prompt = "Conclude the article, summarizing the main insights about the topic but never include the words conclusion or summarize in the first sentence. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
     faq_prompt = "Generate frequently asked questions related to the content with answers. Ensure all content is in first person singular (I, me, my, mine), concise, and avoid unnecessary adjectives, overall, nutshell, conclusion and wording. You should speak with a confident, knowledgeable, neutral and clear tone of voice."
 elif language == "Swedish":
@@ -92,8 +97,7 @@ def main():
         accumulated_content += f"## {title}\n\n{title_content}"
 
         for h2_header in h2_headers_inputs:
-            if h2_header:  # check if the user has entered something
-                # Generate content for H2 header using predefined prompt
+            if h2_header:
                 prompt = h2_prompt.format(h2_header=h2_header)
                 h2_content = generate_content(prompt, accumulated_content)
                 st.write(f"### {h2_header}\n\n{h2_content}")
@@ -141,6 +145,8 @@ def main():
 
         download_link = get_html_download_link(html_content, "output_article.html")
         st.markdown(download_link, unsafe_allow_html=True)
+
+    display_versions()
 
 if __name__ == "__main__":
     main()
