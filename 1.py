@@ -1,21 +1,13 @@
-import openai
-from dotenv import load_dotenv
 import streamlit as st
-import os
-import time
-from ratelimiter import RateLimiter
-import time
+import openai
 import base64
 import markdown
 
-#load_dotenv()
-#openai.api_key = os.getenv('OPENAI_API_KEY')
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 VERSIONS = {
     "1.0.6": "Added important keywords."
 }
-# Added app version
 APP_VERSION = "1.0.6"
 
 def display_versions():
@@ -24,7 +16,6 @@ def display_versions():
         st.sidebar.text(f"Version {version}:")
         st.sidebar.text(description)
 
-# Added word and character count
 def compute_counts(text):
     word_count = len(text.split())
     char_count = len(text)
@@ -48,16 +39,12 @@ elif language == "Swedish":
     faq_prompt = "Generera vanligt förekommande frågor relaterade till innehållet med svar. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
-    # Debug: Display the prompt being sent to the model
-    st.write(f"Prompt Sent to GPT:\n{prompt}")
 
-    # Initial message for GPT
     initial_message = {
         "role": "user",
         "content": f"These keywords are important: {keywords}. Use where it seems appropriate."
     }
 
-    # Set the system message based on the chosen language
     if language == "English":
         system_message = {"role": "system", "content": "Craft detailed, engaging, and SEO-optimized content. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write conclusions."}
     elif language == "Swedish":
