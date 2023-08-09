@@ -19,7 +19,7 @@ def display_versions():
 def compute_counts(text):
     return len(text.split()), len(text)
 
-def get_prompts(language):
+def get_prompts(language, keywords):
     if language == "English":
         return {
             "title_prompt": "Craft a detailed SEO-OPTIMIZED article on the topic '{title}'. Try to use any of these keywords: {keywords}. The narrative should be concise, devoid of extraneous adjectives, and phrases such as 'overall', 'nutshell', and 'conclusion'. Maintain a confident, informed, neutral, and lucid tone throughout.",
@@ -72,7 +72,7 @@ def main():
     num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", 1, 5, 1)
     h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
     language = st.selectbox("Choose a language:", ["English", "Swedish"])
-    prompts = get_prompts(language)
+    prompts = get_prompts(language, keywords)
 
     if st.button("Generate Content"):
         accumulated_content = ""
