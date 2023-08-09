@@ -17,7 +17,7 @@ def compute_counts(text):
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
     
-    prompt_with_keywords = f"You should speak with a confident, knowledgeable, neutral and clear tone of voice.\n\n{prompt}."
+    prompt_with_keywords = f"You should speak with a confident, knowledgeable, neutral and clear tone of voice. These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them. \n\n{prompt}."
     
     # Printing the prompt for debugging
     # st.write(f"Debug - Prompt sent to the model: {prompt_with_keywords}")
