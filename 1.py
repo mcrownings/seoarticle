@@ -19,7 +19,7 @@ def display_versions():
 def compute_counts(text):
     return len(text.split()), len(text)
 
-def get_prompts(language, keywords):
+def get_prompts(language):
     if language == "English":
         return {
             "title_prompt": "Craft a detailed SEO-OPTIMIZED article on the topic '{title}'. Try to use any of these keywords: {keywords}. The narrative should be concise, devoid of extraneous adjectives, and phrases such as 'overall', 'nutshell', and 'conclusion'. Maintain a confident, informed, neutral, and lucid tone throughout.",
