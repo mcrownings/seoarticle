@@ -48,6 +48,10 @@ elif language == "Swedish":
     faq_prompt = "Generera vanligt förekommande frågor relaterade till innehållet med svar. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
+
+    # Display the prompt for debugging purposes
+    st.write(f"Debug Prompt: {prompt}")
+    
     # Initial message for GPT
     initial_message = {
         "role": "user",
