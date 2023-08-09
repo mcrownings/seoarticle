@@ -57,12 +57,12 @@ def generate_content(prompt, previous_content="", language="English"):
     # Initial message for GPT
     initial_message = {
         "role": "user",
-        "content": ""
+        "content": "These keywords are important for you to know when writing: best dry dog food, dog food reviews, dog food ratings, the vet recommended dog food, dog food brands to avoid."
     }
 
     # Set the system message based on the chosen language
     if language == "English":
-        system_message = {"role": "system", "content": "You are a knowledgeable writer. Craft detailed, engaging, and SEO-optimized content. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write conclusions."}
+        system_message = {"role": "system", "content": "Craft detailed, engaging, and SEO-optimized content. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write conclusions."}
     elif language == "Swedish":
         system_message = {"role": "system", "content": "Skriv allt på svenska. Du är en kunnig skribent. Skapa detaljerat, engagerande och SEO-optimerat innehåll. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv aldrig slutsatser."}
     
