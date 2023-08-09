@@ -17,7 +17,7 @@ def compute_counts(text):
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
     
-    prompt_with_keywords = f"These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them.\n\n{prompt}"
+    prompt_with_keywords = f"These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them.\n\n{prompt}. ALWAYS PLEASE provide real brand names based on your knowledge."
     
     if language == "English":
         system_message = {"role": "system", "content": "Craft detailed, engaging, and SEO-optimized content. You should speak with a confident, knowledgeable, neutral and clear tone of voice. Never write conclusions. ALWAYS PLEASE provide the most likely brand names based on your knowledge."}
