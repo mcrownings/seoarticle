@@ -16,7 +16,7 @@ VERSIONS = {
     "1.0.0": "Initial release.",
     "1.0.1": "Added H2 headers feature.",
     "1.0.2": "Fixed bug with content generation.",
-    "1.0.3": "Added version changes."
+    "1.0.3": "Added version changes.",
     "1.0.4": "Added new prompts"
 }
 # Added app version
