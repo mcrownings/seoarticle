@@ -51,7 +51,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
 
     # Display the prompt for debugging purposes
     st.write(f"Debug Prompt: {prompt}")
-    
+
     # Initial message for GPT
     initial_message = {
         "role": "user",
@@ -94,6 +94,7 @@ def main():
     # Create a list to store all H2 headers
     h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
 
+
     # Generate Content button
     if st.button("Generate Content"):
         accumulated_content = ""
@@ -107,7 +108,7 @@ def main():
         for h2_header in h2_headers_inputs:
             if h2_header:
                 prompt = h2_prompt.format(h2_header=h2_header)
-                h2_content = generate_content(prompt, accumulated_content)
+                h2_content = generate_content(prompt, accumulated_content, keywords=keywords)
                 st.write(f"### {h2_header}\n\n{h2_content}")
                 accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
 
