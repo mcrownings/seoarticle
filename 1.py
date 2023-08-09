@@ -69,8 +69,7 @@ def main():
             if h2_header:
                 h2_prompt = f"Write a section on '{h2_header}' relevant to the topic of '{topic}' keeping in mind the keywords '{keywords}'"
                 h2_content = generate_content(h2_prompt, accumulated_content, keywords=keywords)
-                #accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
-                accumulated_content += f"{h2_content}\n"
+                accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
                 st.write(f"### {h2_header}\n\n{h2_content}")
 
         # Display counts
