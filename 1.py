@@ -17,7 +17,7 @@ def compute_counts(text):
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
     
-    prompt_with_keywords = f"These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them.\n\n{prompt}. ALWAYS PLEASE provide real brand names based on your knowledge."
+    prompt_with_keywords = f"These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. DO NOT overlook them.\n\n{prompt}. ALWAYS PLEASE provide real brand names based on your knowledge."
     
     # Printing the prompt for debugging
     st.write(f"Debug - Prompt sent to the model: {prompt_with_keywords}")
