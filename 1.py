@@ -43,7 +43,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
 
     initial_message = {
         "role": "user",
-        "content": f"These keywords are important: {keywords}. Use where it seems appropriate."
+        "content": f"These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them."
     }
 
     if language == "English":
