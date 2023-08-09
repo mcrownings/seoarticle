@@ -6,9 +6,9 @@ import markdown
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 VERSIONS = {
-    "1.2": "Refactored code, added keywords and new prompts."
+    "1.21": "Added new prompts."
 }
-APP_VERSION = "1.2"
+APP_VERSION = "1.21"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -19,7 +19,7 @@ def display_versions():
 def compute_counts(text):
     return len(text.split()), len(text)
 
-def get_prompts(language):
+def get_prompts(language, keywords):
     if language == "English":
         return {
             "title_prompt": "Craft a detailed SEO-OPTIMIZED article on the topic '{title}'. Try to use any of these keywords: {keywords}. The narrative should be concise, devoid of extraneous adjectives, and phrases such as 'overall', 'nutshell', and 'conclusion'. Maintain a confident, informed, neutral, and lucid tone throughout.",
@@ -78,14 +78,14 @@ def main():
         accumulated_content = ""
         
         # Main title content
-        title_content = generate_content(prompts["title_prompt"].format(title=title), keywords=keywords)
+        title_content = generate_content(prompts["title_prompt"].format(title=title, keywords=keywords), keywords=keywords)
         accumulated_content += f"## {title}\n\n{title_content}"
         st.write(accumulated_content)
 
         # H2 sections
         for h2_header in h2_headers_inputs:
             if h2_header:
-                h2_content = generate_content(prompts["h2_prompt"].format(h2_header=h2_header), accumulated_content, keywords=keywords)
+                h2_content = generate_content(prompts["h2_prompt"].format(h2_header=h2_header, keywords=keywords), accumulated_content, keywords=keywords)
                 accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
                 st.write(f"### {h2_header}\n\n{h2_content}")
 
