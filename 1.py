@@ -22,8 +22,8 @@ def compute_counts(text):
 def get_prompts(language):
     if language == "English":
         return {
-            "title_prompt": "Craft a detailed SEO-optimized article on the topic '{title}'.The narrative should be concise, devoid of extraneous adjectives, and phrases such as 'overall', 'nutshell', and 'conclusion'. Maintain a confident, informed, neutral, and lucid tone throughout.",
-            "h2_prompt": "Compose an SEO-enhanced paragraph centered on the topic '{h2_header}'. Exclude superfluous adjectives and avoid phrases like 'overall', 'nutshell', and 'conclusion'. The narrative tone should exude confidence, expertise, neutrality, and clarity.",
+            "title_prompt": "Craft a detailed SEO-OPTIMIZED article on the topic '{title}'. Try to use any of these keywords: {keywords}. The narrative should be concise, devoid of extraneous adjectives, and phrases such as 'overall', 'nutshell', and 'conclusion'. Maintain a confident, informed, neutral, and lucid tone throughout.",
+            "h2_prompt": "Compose an SHORT SEO-OPTIMIZED paragraph centered on the topic '{h2_header}'. Try to use any of these keywords: {keywords}. Exclude superfluous adjectives and avoid phrases like 'overall', 'nutshell', and 'conclusion'. The narrative tone should exude confidence, expertise, neutrality, and clarity.",
             "summary_table_prompt": "Using the given data, craft a Markdown table that includes a minimum of two columns and an appropriate number of rows. The narrative should convey confidence, expertise, neutrality, and clarity.",
             "introduction_prompt": "Write a short introduction paragraph for the content above, start with a question, and focus on the benefit. You should speak with a confident, knowledgeable, neutral and clear tone of voice.",
             "conclusion_prompt": "Summarize the provided content in 3 bullet points. You should speak with a confident, knowledgeable, neutral and clear tone of voice.",
