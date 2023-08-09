@@ -158,6 +158,14 @@ def main():
         st.sidebar.text(f"Total Word Count: {word_count}")
         st.sidebar.text(f"Total Character Count: {char_count}")
 
+        # Send the accumulated content to ChatGPT for rewriting as an SEO-specialist
+        seo_prompt = "Please rewrite the following content as an SEO-specialist:\n" + accumulated_content
+        seo_rewritten_content = generate_content(seo_prompt)
+
+        # Display the SEO-optimized content
+        st.write("### SEO-Optimized Content")
+        st.write(seo_rewritten_content)
+
         html_content = markdown.markdown(accumulated_content)
 
         # Now, save the accumulated_content to an HTML file
