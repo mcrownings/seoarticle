@@ -50,7 +50,7 @@ elif language == "Swedish":
 def generate_content(prompt, previous_content="", language="English", keywords=""):
 
     # Display the prompt for debugging purposes
-    st.write(f"Debug Prompt: {prompt}")
+    # st.write(f"Debug Prompt: {prompt}")
 
     # Initial message for GPT
     initial_message = {
@@ -93,7 +93,6 @@ def main():
 
     # Create a list to store all H2 headers
     h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
-
 
     # Generate Content button
     if st.button("Generate Content"):
@@ -150,9 +149,6 @@ def main():
         st.write(f"## Frequently Asked Questions\n\n{faq}")
         accumulated_content += "\n\n" + faq
 
-        # Debug: Display accumulated_content
-        # st.write(f"Accumulated Content:\n{accumulated_content}")
-
         # Compute word and character counts for the accumulated content
         word_count, char_count = compute_counts(accumulated_content)
         st.sidebar.text(f"Total Word Count: {word_count}")
@@ -166,22 +162,18 @@ def main():
         st.write("### SEO-Optimized Content")
         st.write(seo_rewritten_content)
 
-        html_content = markdown.markdown(accumulated_content)
+        html_content = markdown.markdown(seo_rewritten_content)
 
-        # Now, save the accumulated_content to an HTML file
-        with open("output_article.html", "w", encoding="utf-8") as file:
+        # Now, save the seo_rewritten_content to an HTML file
+        with open("output_article_seo.html", "w", encoding="utf-8") as file:
             file.write(html_content)
 
         # Then, generate a download link for the HTML file and display it in Streamlit
-
         def get_html_download_link(html_string, filename):
-            """
-            Generate a link to download the HTML string as an html file.
-            """
             b64 = base64.b64encode(html_string.encode()).decode()
             return f'<strong><a href="data:text/html;base64,{b64}" download="{filename}">Download file</a></strong>'
 
-        download_link = get_html_download_link(html_content, "output_article.html")
+        download_link = get_html_download_link(html_content, "output_article_seo.html")
         st.markdown(download_link, unsafe_allow_html=True)
 
     display_versions()
