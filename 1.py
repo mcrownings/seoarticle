@@ -72,73 +72,75 @@ def main():
     st.title('Content Generator')
     st.sidebar.text(f"App Version: {APP_VERSION}")
 
-    accumulated_content = ""
-
-    # 1. User provides a title.
+    # User provides a title.
     title = st.text_input("Enter a title:")
-    if title:
+
+    # Let the user decide how many H2 sections they want to add
+    num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", 1, 5, 1)
+
+    # Create a list to store all H2 headers
+    h2_headers = [st.text_input(f"Enter headline #{i+1}:") for i in range(num_h2_sections)]
+
+    # Generate Content button
+    if st.button("Generate Content"):
+        accumulated_content = ""
+
         # Generate content for the title using predefined prompt
         prompt = title_prompt.format(title=title)
         title_content = generate_content(prompt)
         st.write(f"## {title}\n\n{title_content}")
         accumulated_content += f"## {title}\n\n{title_content}"
 
-        # Let the user decide how many H2 sections they want to add
-    num_h2_sections = st.sidebar.slider("How many H2 sections would you like to add?", 1, 5, 1)
+        for h2_header in h2_headers:
+            if h2_header:  # check if the user has entered something
+                # Generate content for H2 header using predefined prompt
+                prompt = h2_prompt.format(h2_header=h2_header)
+                h2_content = generate_content(prompt, accumulated_content)
+                st.write(f"### {h2_header}\n\n{h2_content}")
+                accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
 
-    for i in range(num_h2_sections):
-        # 2. User provides an H2 header.
-        # h2_header = st.text_input("Enter an H2 header:")
-        h2_header = st.text_input(f"Enter H2 header #{i+1}:")
-        if h2_header:
-            # Generate content for H2 header using predefined prompt
-            prompt = h2_prompt.format(h2_header=h2_header)
-            h2_content = generate_content(prompt, accumulated_content)
-            st.write(f"### {h2_header}\n\n{h2_content}")
-            accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
+                # 3. Generate a summary table for the content using predefined prompt.
+                summary_table = generate_content(summary_table_prompt, accumulated_content)
+                st.write(summary_table)
+                accumulated_content += "\n\n" + summary_table
 
-            # 3. Generate a summary table for the content using predefined prompt.
-            summary_table = generate_content(summary_table_prompt, accumulated_content)
-            st.write(summary_table)
-            accumulated_content += "\n\n" + summary_table
+                # 4. Generate an introduction section using predefined prompt.
+                introduction = generate_content(introduction_prompt, accumulated_content)
+                st.write(f"## Introduction\n\n{introduction}")
+                accumulated_content += "\n\n" + introduction
 
-            # 4. Generate an introduction section using predefined prompt.
-            introduction = generate_content(introduction_prompt, accumulated_content)
-            st.write(f"## Introduction\n\n{introduction}")
-            accumulated_content += "\n\n" + introduction
+                # 5. Generate a conclusion section using predefined prompt.
+                conclusion = generate_content(conclusion_prompt, accumulated_content)
+                st.write(f"## Conclusion\n\n{conclusion}")
+                accumulated_content += "\n\n" + conclusion
 
-            # 5. Generate a conclusion section using predefined prompt.
-            conclusion = generate_content(conclusion_prompt, accumulated_content)
-            st.write(f"## Conclusion\n\n{conclusion}")
-            accumulated_content += "\n\n" + conclusion
+                # 6. Generate FAQ section using predefined prompt.
+                faq = generate_content(faq_prompt, accumulated_content)
+                st.write(f"## Frequently Asked Questions\n\n{faq}")
+                accumulated_content += "\n\n" + faq
 
-            # 6. Generate FAQ section using predefined prompt.
-            faq = generate_content(faq_prompt, accumulated_content)
-            st.write(f"## Frequently Asked Questions\n\n{faq}")
-            accumulated_content += "\n\n" + faq
+                # Compute word and character counts for the accumulated content
+                word_count, char_count = compute_counts(accumulated_content)
+                st.sidebar.text(f"Total Word Count: {word_count}")
+                st.sidebar.text(f"Total Character Count: {char_count}")
 
-            # Compute word and character counts for the accumulated content
-            word_count, char_count = compute_counts(accumulated_content)
-            st.sidebar.text(f"Total Word Count: {word_count}")
-            st.sidebar.text(f"Total Character Count: {char_count}")
+                html_content = markdown.markdown(accumulated_content)
 
-            html_content = markdown.markdown(accumulated_content)
+                # Now, save the accumulated_content to an HTML file
+                with open("output_article.html", "w", encoding="utf-8") as file:
+                    file.write(html_content)
 
-            # Now, save the accumulated_content to an HTML file
-            with open("output_article.html", "w", encoding="utf-8") as file:
-                file.write(html_content)
+                # Then, generate a download link for the HTML file and display it in Streamlit
 
-            # Then, generate a download link for the HTML file and display it in Streamlit
+                def get_html_download_link(html_string, filename):
+                    """
+                    Generate a link to download the HTML string as an html file.
+                    """
+                    b64 = base64.b64encode(html_string.encode()).decode()
+                    return f'<strong><a href="data:text/html;base64,{b64}" download="{filename}">Download file</a></strong>'
 
-            def get_html_download_link(html_string, filename):
-                """
-                Generate a link to download the HTML string as an html file.
-                """
-                b64 = base64.b64encode(html_string.encode()).decode()
-                return f'<strong><a href="data:text/html;base64,{b64}" download="{filename}">Download file</a></strong>'
-
-            download_link = get_html_download_link(html_content, "output_article.html")
-            st.markdown(download_link, unsafe_allow_html=True)
+                download_link = get_html_download_link(html_content, "output_article.html")
+                st.markdown(download_link, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
