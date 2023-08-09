@@ -1,0 +1,6 @@
+.env
+nltk_env
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
