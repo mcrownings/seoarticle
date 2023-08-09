@@ -8,9 +8,12 @@ import time
 import base64
 import markdown
 
-load_dotenv()
+#load_dotenv()
+#openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+# Added app version
+APP_VERSION = "1.0.1"
 
 language = st.selectbox("Choose a language:", ["English", "Swedish"])
 
@@ -61,6 +64,7 @@ def generate_content(prompt, previous_content="", language="English"):
 
 def main():
     st.title('Content Generator')
+    st.sidebar.text(f"App Version: {APP_VERSION}")
 
     accumulated_content = ""
 
