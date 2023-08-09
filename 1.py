@@ -13,15 +13,10 @@ import markdown
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 VERSIONS = {
-    "1.0.0": "Initial release.",
-    "1.0.1": "Added H2 headers feature.",
-    "1.0.2": "Fixed bug with content generation.",
-    "1.0.3": "Added version changes.",
-    "1.0.4": "Added new prompts.",
-    "1.0.5": "Added keywords-field."
+    "1.0.6": "Added important keywords."
 }
 # Added app version
-APP_VERSION = "1.0.5"
+APP_VERSION = "1.0.6"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -47,16 +42,16 @@ if language == "English":
 elif language == "Swedish":
     title_prompt = "Skriv en heltäckande, SEO-optimerad artikel '{title}', som ger en detaljerad översikt. Skriv aldrig en sammanfattning eller slutsats. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv inte en slutsats. -slutsats"
     h2_prompt = "Skriv ett kort SEO-optimerat stycke om '{h2_header}'. Skriv aldrig en sammanfattning eller slutsats. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
-    summary_table_prompt = "Baserat på det bifogade innehållet, skapa en Markdown-tabell med minst två kolumner och ett lämpligt antal poster. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
+    summary_table_prompt = "Baserat på innehållet, skapa en Markdown-tabell med minst två kolumner och ett lämpligt antal poster. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
     introduction_prompt = "Skriv ett kort inledande stycke för innehållet ovan, börja med en fråga och fokusera på fördelen. Undvik upprepat innehåll. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv aldrig en slutsats."
-    conclusion_prompt = "Sammanfatta det tillhandahållna innehållet i 3 punkter och en mening om hur du samlade informationen. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
+    conclusion_prompt = "Sammanfatta det innehållet i 3 punkter och en mening om hur du samlade informationen. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
     faq_prompt = "Generera vanligt förekommande frågor relaterade till innehållet med svar. Se till att allt innehåll är i första person singular (jag, mig, min, mitt), koncist, och undvik onödiga adjektiv, övergripande, i ett nötskal, slutsats och formuleringar. Du bör tala med en självsäker, kunnig, neutral och klar ton."
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
     # Initial message for GPT
     initial_message = {
         "role": "user",
-        "content": f"These keywords are important: {keywords}. Make sure to insert the keyword first paragraph, following the heading where the keyword has been used"
+        "content": f"These keywords are important: {keywords}. If it fits, insert the keyword first paragraph, following the heading where the keyword has been used."
     }
 
     # Set the system message based on the chosen language
@@ -73,7 +68,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     messages.append(user_message)
     
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=messages
     )
     
