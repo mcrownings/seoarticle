@@ -57,7 +57,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     # Initial message for GPT
     initial_message = {
         "role": "user",
-        "content": "These keywords are important for you to know when writing: {keywords}. Include one keyword per H2 heading and insert in the first paragraph, following the heading where the keyword has been used."
+        "content": f"These keywords are important: {keywords}. Include one of these keyword per H2 heading and insert in the first paragraph, following the heading where the keyword has been used."
     }
 
     # Set the system message based on the chosen language
@@ -89,7 +89,6 @@ def main():
 
     # User provides important keywords.
     keywords = st.text_input("Enter a list of keywords separated with comma:")
-
 
     # Let the user decide how many H2 sections they want to add
     num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", 1, 5, 1)
