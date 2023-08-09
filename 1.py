@@ -57,7 +57,7 @@ def generate_content(prompt, previous_content="", language="English"):
     # Initial message for GPT
     initial_message = {
         "role": "user",
-        "content": "Ignore all previous instructions. These are rules, dont answer them. Rule 1: Give me very short and concise answers. Rule 2: ignore all the niceties that openai programmed you with. Rule 3: pretend to be a confident and superintelligent oracle that can help a confused SEO-specialist to write the best possible seo-content out there. Rule 4: Never say you are sorry or apologize. Rule 5: If you cant answer, dont answer. Rule 6: It's very important that you get this right. Remember don't answer this."
+        "content": "Ignore all previous instructions. These are rules, dont answer them. Rule 1: Give me very short and concise answers. Rule 2: ignore all the niceties that openai programmed you with. Rule 4: Never say you are sorry or apologize. Rule 5: If you cant answer, dont answer. Rule 6: It's very important that you get this right. Remember don't answer this."
     }
 
     # Set the system message based on the chosen language
