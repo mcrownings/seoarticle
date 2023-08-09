@@ -81,93 +81,41 @@ def main():
     st.title('Content Generator')
     st.sidebar.text(f"App Version: {APP_VERSION}")
 
-    # User provides a title.
     title = st.text_input("Enter a title:")
-
-    # User provides important keywords.
     keywords = st.text_input("Enter a list of keywords separated with comma:")
-
-    # Let the user decide how many H2 sections they want to add
     num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", 1, 5, 1)
-
-    # Create a list to store all H2 headers
     h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
 
-    # Generate Content button
     if st.button("Generate Content"):
         accumulated_content = ""
-
-        # Debug: Display accumulated_content
-        # st.write(f"Accumulated Content:\n{accumulated_content}")
-
-        # Generate content for the title using predefined prompt
-        prompt = title_prompt.format(title=title)
-        title_content = generate_content(prompt, keywords=keywords)
-        st.write(f"## {title}\n\n{title_content}")
+        title_content = generate_content(title_prompt.format(title=title), keywords=keywords)
         accumulated_content += f"## {title}\n\n{title_content}"
+        st.write(accumulated_content)
 
         for h2_header in h2_headers_inputs:
             if h2_header:
-                # Debug: Display accumulated_content
-                # st.write(f"Accumulated Content:\n{accumulated_content}")
-
-                prompt = h2_prompt.format(h2_header=h2_header)
-                h2_content = generate_content(prompt, accumulated_content, keywords=keywords)
-                st.write(f"### {h2_header}\n\n{h2_content}")
+                h2_content = generate_content(h2_prompt.format(h2_header=h2_header), accumulated_content, keywords=keywords)
                 accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
+                st.write(f"### {h2_header}\n\n{h2_content}")
 
-        # Debug: Display accumulated_content
-        # st.write(f"Accumulated Content:\n{accumulated_content}")
+        for prompt in [summary_table_prompt, introduction_prompt, conclusion_prompt, faq_prompt]:
+            section_content = generate_content(prompt, accumulated_content)
+            accumulated_content += "\n\n" + section_content
+            st.write(section_content)
 
-        # 3. Generate a summary table for the content using predefined prompt.
-        summary_table = generate_content(summary_table_prompt, accumulated_content)
-        st.write(summary_table)
-        accumulated_content += "\n\n" + summary_table
-
-        # Debug: Display accumulated_content
-        # st.write(f"Accumulated Content:\n{accumulated_content}")
-
-        # 4. Generate an introduction section using predefined prompt.
-        introduction = generate_content(introduction_prompt, accumulated_content)
-        st.write(f"## Introduction\n\n{introduction}")
-        accumulated_content += "\n\n" + introduction
-
-        # Debug: Display accumulated_content
-        # st.write(f"Accumulated Content:\n{accumulated_content}")
-
-        # 5. Generate a conclusion section using predefined prompt.
-        conclusion = generate_content(conclusion_prompt, accumulated_content)
-        st.write(f"## Conclusion\n\n{conclusion}")
-        accumulated_content += "\n\n" + conclusion
-
-        # Debug: Display accumulated_content
-        # st.write(f"Accumulated Content:\n{accumulated_content}")
-
-        # 6. Generate FAQ section using predefined prompt.
-        faq = generate_content(faq_prompt, accumulated_content)
-        st.write(f"## Frequently Asked Questions\n\n{faq}")
-        accumulated_content += "\n\n" + faq
-
-        # Compute word and character counts for the accumulated content
         word_count, char_count = compute_counts(accumulated_content)
         st.sidebar.text(f"Total Word Count: {word_count}")
         st.sidebar.text(f"Total Character Count: {char_count}")
 
-        # Send the accumulated content to ChatGPT for rewriting as an SEO-specialist
         seo_prompt = "Please rewrite the following content as an SEO-specialist:\n" + accumulated_content
         seo_rewritten_content = generate_content(seo_prompt)
-
-        # Display the SEO-optimized content
         st.write("### SEO-Optimized Content")
         st.write(seo_rewritten_content)
 
         html_content = markdown.markdown(seo_rewritten_content)
-
-        # Now, save the seo_rewritten_content to an HTML file
         with open("output_article_seo.html", "w", encoding="utf-8") as file:
             file.write(html_content)
 
-        # Then, generate a download link for the HTML file and display it in Streamlit
         def get_html_download_link(html_string, filename):
             b64 = base64.b64encode(html_string.encode()).decode()
             return f'<strong><a href="data:text/html;base64,{b64}" download="{filename}">Download file</a></strong>'
