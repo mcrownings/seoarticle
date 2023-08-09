@@ -83,8 +83,13 @@ def main():
         st.write(f"## {title}\n\n{title_content}")
         accumulated_content += f"## {title}\n\n{title_content}"
 
+        # Let the user decide how many H2 sections they want to add
+        num_h2_sections = st.sidebar.slider("How many H2 sections would you like to add?", 1, 5, 1)
+
+    for i in range(num_h2_sections):
         # 2. User provides an H2 header.
-        h2_header = st.text_input("Enter an H2 header:")
+        # h2_header = st.text_input("Enter an H2 header:")
+        h2_header = st.text_input(f"Enter H2 header #{i+1}:")
         if h2_header:
             # Generate content for H2 header using predefined prompt
             prompt = h2_prompt.format(h2_header=h2_header)
