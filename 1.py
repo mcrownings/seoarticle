@@ -15,6 +15,12 @@ openai.api_key = st.secrets["OPENAI_API_KEY"]
 # Added app version
 APP_VERSION = "1.0.1"
 
+# Added word and character count
+def compute_counts(text):
+    word_count = len(text.split())
+    char_count = len(text)
+    return word_count, char_count
+
 language = st.selectbox("Choose a language:", ["English", "Swedish"])
 
 # Predefined prompts for each section
@@ -105,6 +111,11 @@ def main():
             faq = generate_content(faq_prompt, accumulated_content)
             st.write(f"## Frequently Asked Questions\n\n{faq}")
             accumulated_content += "\n\n" + faq
+
+            # Compute word and character counts for the accumulated content
+            word_count, char_count = compute_counts(accumulated_content)
+            st.sidebar.text(f"Total Word Count: {word_count}")
+            st.sidebar.text(f"Total Character Count: {char_count}")
 
             html_content = markdown.markdown(accumulated_content)
 
