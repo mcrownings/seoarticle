@@ -51,7 +51,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     # Initial message for GPT
     initial_message = {
         "role": "user",
-        "content": f"These keywords are important: {keywords}. If it fits, insert the keyword first paragraph, following the heading where the keyword has been used."
+        "content": f"These keywords are important: {keywords}. Use where it seems appropriate."
     }
 
     # Set the system message based on the chosen language
