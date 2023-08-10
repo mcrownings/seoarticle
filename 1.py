@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.24": "New UX"
+    "1.25": "Removed optional h2"
 }
-APP_VERSION = "1.24"
+APP_VERSION = "1.25"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -43,8 +43,8 @@ def generate_content(prompt, previous_content="", language="Swedish", keywords="
     messages.append(user_message)
     
     # Debug prints
-    st.write(f"System Message: {system_message['content']}")
-    st.write(f"User Message: {user_message['content']}")
+    #st.write(f"System Message: {system_message['content']}")
+    #st.write(f"User Message: {user_message['content']}")
 
     try:
         response = openai.ChatCompletion.create(
@@ -74,7 +74,6 @@ def main():
     """
 
     accumulated_content = ""
-    st.write(f"Selected Language: {language}")
     if st.button("Generate Content", key="generate_button"):    
         with st.spinner('Generating content...'):
             # Main article content
