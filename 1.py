@@ -78,7 +78,7 @@ def main():
     if st.button("Generate Content", key="generate_button"):    
         with st.spinner('Generating content...'):
             # Main article content
-            article_content = generate_content(prompt, keywords=keywords)
+            article_content = generate_content(prompt, language=language, keywords=keywords)
             accumulated_content += f"{article_content}\n"
             st.write(accumulated_content)
 
