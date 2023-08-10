@@ -19,21 +19,20 @@ def display_versions():
 def compute_counts(text):
     return len(text.split()), len(text)
 
+LANGUAGES = {
+    "English": """You will be provided with a list of very important keywords, a topic and target audience, and your task is to generate an SEO-Optimized article. 
+        Provide real brand names instead of placeholders. For example, instead of saying "Brand 1" write "DoorDash."
+        Include a table of contents, FAQ with answers. 
+        Use HTML-Markdown language.
+        Speak with a confident, knowledgeable, neutral and clear tone of voice.""",
+    "Swedish": "Skriv allt på svenska. Du är en kunnig SEO-skribent. Skapa detaljerat, engagerande och SEO-optimerat innehåll. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv aldrig slutsatser."
+}
+
 def generate_content(prompt, previous_content="", language="English", keywords=""):
     
     prompt_with_keywords = f"You should speak with a confident, knowledgeable, neutral and clear tone of voice. These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them. \n\n{prompt}."
 
-    system_prompt_content = """You will be provided with a list of very important keywords, a topic and target audience, and your task is to generate an SEO-Optimized article. 
-        Provide real brand names instead of placeholders. For example, instead of saying "Brand 1" write "DoorDash."
-        Include a table of contents, FAQ with answers. 
-        Use HTML-Markdown language.
-        Speak with a confident, knowledgeable, neutral and clear tone of voice."""
-
-    if language == "English":
-        system_message = {"role": "system", "content": system_prompt_content}
-    else:
-        system_message = {"role": "system", "content": "Skriv allt på svenska. Du är en kunnig SEO-skribent. Skapa detaljerat, engagerande och SEO-optimerat innehåll. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv aldrig slutsatser."}
-    
+    system_message = {"role": "system", "content": LANGUAGES.get(language, LANGUAGES["English"])}
     user_message = {"role": "user", "content": prompt_with_keywords}
     
     messages = [system_message]
@@ -41,12 +40,15 @@ def generate_content(prompt, previous_content="", language="English", keywords="
         messages.append({"role": "user", "content": previous_content})
     messages.append(user_message)
     
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=messages
-    )
-    
-    return response.choices[0].message['content'].strip()
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages
+        )
+        return response.choices[0].message['content'].strip()
+    except Exception as e:
+        # Handle the exception or return an error message
+        return str(e)
 
 def main():
     st.title('Content Generator')
