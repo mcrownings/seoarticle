@@ -46,7 +46,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     return response.choices[0].message['content'].strip()
 
 def generate_h2_content(topic, audience, keywords, h2_header):
-    h2_prompt = f"Craft short, engaging and SEO-optimized content on the '{h2_header}', and relevant to the topic of '{topic}', while effectively capturing the attention of the '{audience}' audience. Keeping in mind the keywords '{keywords}.'"
+    h2_prompt = f"Craft short, engaging and SEO-optimized content on the '{h2_header}', and relevant to the topic of '{topic}', while effectively capturing the attention of the '{audience}'. Keeping in mind these keywords: '{keywords}.'"
     return generate_content(h2_prompt, keywords=keywords)
 
 def main():
@@ -58,7 +58,7 @@ def main():
     keywords = st.text_input("Enter a list of keywords separated with comma:", key="keywords_input")
     language = st.selectbox("Choose a language:", ["English", "Swedish"], key="language_selectbox")
 
-    prompt = f"Write an article on '{topic}' while effectively capturing the attention of the '{audience}' audience. The article needs to be optimized for the keywords '{keywords}' and You SHOULD speak with a confident, knowledgeable, neutral and clear tone of voice. Include a table of contents, using Markdown language, and concluding with three relevant FAQs and answers. The aim is to create valuable content that engages readers and satisfies SEO needs. PLEASE, ALWAYS provide the most likely brand names based on your knowledge."
+    prompt = f"Write an article on '{topic}' while effectively capturing the attention of the '{audience}'. The article needs to be optimized for the keywords '{keywords}' and You SHOULD speak with a confident, knowledgeable, neutral and clear tone of voice. Include a table of contents, using Markdown language, The aim is to create valuable content that engages readers and satisfies SEO-needs. PLEASE, ALWAYS provide the most likely brand names based on your knowledge."
     
     num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", MIN_HEADLINES, MAX_HEADLINES, 1, key="h2_slider")
     h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:", key=f"h2_input_{i}") for i in range(num_h2_sections)]
