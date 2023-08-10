@@ -74,6 +74,7 @@ def main():
     """
 
     accumulated_content = ""
+    st.write(f"Selected Language: {language}")
     if st.button("Generate Content", key="generate_button"):    
         with st.spinner('Generating content...'):
             # Main article content
