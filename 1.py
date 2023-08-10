@@ -1,10 +1,14 @@
 import streamlit as st
 import openai
 
+# Constants
+MAX_HEADLINES = 5
+MIN_HEADLINES = 1
+
 VERSIONS = {
-    "1.23": "New prompts"
+    "1.24": "New UX"
 }
-APP_VERSION = "1.23"
+APP_VERSION = "1.24"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -41,6 +45,10 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     
     return response.choices[0].message['content'].strip()
 
+def generate_h2_content(topic, audience, keywords, h2_header):
+    h2_prompt = f"Craft short, engaging and SEO-optimized content on the '{h2_header}', and relevant to the topic of '{topic}', while effectively capturing the attention of the '{audience}' audience. Keeping in mind the keywords '{keywords}.'"
+    return generate_content(h2_prompt, keywords=keywords)
+
 def main():
     st.title('Content Generator')
     st.sidebar.text(f"App Version: {APP_VERSION}")
@@ -51,10 +59,10 @@ def main():
     language = st.selectbox("Choose a language:", ["English", "Swedish"])
 
     prompt = f"Write an article on '{topic}' while effectively capturing the attention of the '{audience}' audience. The article needs to be optimized for the keywords '{keywords}' and You SHOULD speak with a confident, knowledgeable, neutral and clear tone of voice. Include a table of contents, using Markdown language, and concluding with three relevant FAQs and answers. The aim is to create valuable content that engages readers and satisfies SEO needs. PLEASE, ALWAYS provide the most likely brand names based on your knowledge."
-
-    num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", 1, 5, 1)
-    h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
     
+    num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", MIN_HEADLINES, MAX_HEADLINES, 1)
+    h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
+
     accumulated_content = ""
     if st.button("Generate Content"):
         
@@ -63,19 +71,26 @@ def main():
         #accumulated_content += f"## {topic}\n\n{article_content}\n"
         accumulated_content += f"{article_content}\n"
         st.write(accumulated_content)
+
+    accumulated_content = ""
+    if st.button("Generate Content"):
+        with st.spinner('Generating content...'):
+            # Main article content
+            article_content = generate_content(prompt, keywords=keywords)
+            accumulated_content += f"{article_content}\n"
+            st.write(accumulated_content)
         
         # H2 sections
-        for h2_header in h2_headers_inputs:
-            if h2_header:
-                h2_prompt = f"Craft short, engaging and SEO-optimized content on the '{h2_header}', and relevant to the topic of '{topic}', while effectively capturing the attention of the '{audience}' audience. Keeping in mind the keywords '{keywords}.'"
-                h2_content = generate_content(h2_prompt, accumulated_content, keywords=keywords)
-                accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
-                st.write(f"### {h2_header}\n\n{h2_content}")
+            for h2_header in h2_headers_inputs:
+                if h2_header:
+                    h2_content = generate_h2_content(topic, audience, keywords, h2_header)
+                    accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
+                    st.write(f"### {h2_header}\n\n{h2_content}")
 
-        # Display counts
-        word_count, char_count = compute_counts(accumulated_content)
-        st.sidebar.text(f"Total Word Count: {word_count}")
-        st.sidebar.text(f"Total Character Count: {char_count}")
+            # Display counts
+            word_count, char_count = compute_counts(accumulated_content)
+            st.sidebar.text(f"Total Word Count: {word_count}")
+            st.sidebar.text(f"Total Character Count: {char_count}")
 
     display_versions()
 
