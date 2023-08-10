@@ -53,27 +53,18 @@ def main():
     st.title('Content Generator')
     st.sidebar.text(f"App Version: {APP_VERSION}")
 
-    topic = st.text_input("Enter the Topic:")
-    audience = st.text_input("Enter the Target Audience:")
-    keywords = st.text_input("Enter a list of keywords separated with comma:")
-    language = st.selectbox("Choose a language:", ["English", "Swedish"])
+    topic = st.text_input("Enter the Topic:", key="topic_input")
+    audience = st.text_input("Enter the Target Audience:", key="audience_input")
+    keywords = st.text_input("Enter a list of keywords separated with comma:", key="keywords_input")
+    language = st.selectbox("Choose a language:", ["English", "Swedish"], key="language_selectbox")
 
     prompt = f"Write an article on '{topic}' while effectively capturing the attention of the '{audience}' audience. The article needs to be optimized for the keywords '{keywords}' and You SHOULD speak with a confident, knowledgeable, neutral and clear tone of voice. Include a table of contents, using Markdown language, and concluding with three relevant FAQs and answers. The aim is to create valuable content that engages readers and satisfies SEO needs. PLEASE, ALWAYS provide the most likely brand names based on your knowledge."
     
-    num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", MIN_HEADLINES, MAX_HEADLINES, 1)
-    h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:") for i in range(num_h2_sections)]
+    num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", MIN_HEADLINES, MAX_HEADLINES, 1, key="h2_slider")
+    h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:", key=f"h2_input_{i}") for i in range(num_h2_sections)]
 
     accumulated_content = ""
-    if st.button("Generate Content"):
-        
-        # Main article content
-        article_content = generate_content(prompt, keywords=keywords)
-        #accumulated_content += f"## {topic}\n\n{article_content}\n"
-        accumulated_content += f"{article_content}\n"
-        st.write(accumulated_content)
-
-    accumulated_content = ""
-    if st.button("Generate Content"):
+    if st.button("Generate Content", key="generate_button"):    
         with st.spinner('Generating content...'):
             # Main article content
             article_content = generate_content(prompt, keywords=keywords)
