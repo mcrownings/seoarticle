@@ -20,7 +20,7 @@ def compute_counts(text):
     return len(text.split()), len(text)
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
-
+    
     prompt_with_keywords = f"You should speak with a confident, knowledgeable, neutral and clear tone of voice. These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them. \n\n{prompt}."
 
     system_prompt_content = """You will be provided with a list of very important keywords, a topic and target audience, and your task is to generate an SEO-Optimized article. 
@@ -49,10 +49,6 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     
     return response.choices[0].message['content'].strip()
 
-def generate_h2_content(topic, audience, keywords, h2_header):
-    h2_prompt = f"Craft short, engaging and SEO-optimized content on the Headline2: '{h2_header}' while effectively capturing the attention of the '{audience}'. Keeping in mind these keywords: '{keywords}.'"
-    return generate_content(h2_prompt, keywords=keywords)
-
 def main():
     st.title('Content Generator')
     st.sidebar.text(f"App Version: {APP_VERSION}")
@@ -71,9 +67,6 @@ def main():
     Royal Canin
     """
 
-    num_h2_sections = st.sidebar.slider("How many headlines would you like to add?", MIN_HEADLINES, MAX_HEADLINES, 1, key="h2_slider")
-    h2_headers_inputs = [st.text_input(f"Enter H2 header #{i+1}:", key=f"h2_input_{i}") for i in range(num_h2_sections)]
-
     accumulated_content = ""
     if st.button("Generate Content", key="generate_button"):    
         with st.spinner('Generating content...'):
@@ -81,13 +74,6 @@ def main():
             article_content = generate_content(prompt, keywords=keywords)
             accumulated_content += f"{article_content}\n"
             st.write(accumulated_content)
-        
-        # H2 sections
-            for h2_header in h2_headers_inputs:
-                if h2_header:
-                    h2_content = generate_h2_content(topic, audience, keywords, h2_header)
-                    accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
-                    st.write(f"### {h2_header}\n\n{h2_content}")
 
             # Display counts
             word_count, char_count = compute_counts(accumulated_content)
