@@ -32,7 +32,7 @@ LANGUAGES = {
         Tala med ett självsäkert, kunnigt, neutralt och klart tonfall."""
 }
 
-def generate_content(prompt, previous_content="", language="English", keywords=""):
+def generate_content(prompt, previous_content="", language="{language}", keywords=""):
 
     system_message = {"role": "system", "content": LANGUAGES.get(language, LANGUAGES["English"])}
     user_message = {"role": "user", "content": prompt}
