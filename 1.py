@@ -65,11 +65,11 @@ def main():
     language = st.selectbox("Choose a language:", ["English", "Swedish"], key="language_selectbox")
     
     prompt = f"""
-    Keywords: {keywords}
-    Topic: {topic}
-    Target audience: {audience}
+    Keywords: {keywords}.\n
+    Topic: {topic}.\n
+    Target audience: {audience}.\n
     Here are some examples of real brand names for dog food:
-    Purina
+    Purina,
     Royal Canin
     """
 
