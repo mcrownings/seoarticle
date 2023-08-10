@@ -34,7 +34,7 @@ LANGUAGES = {
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
     
-    prompt_with_keywords = f"You should speak with a confident, knowledgeable, neutral and clear tone of voice. These keywords are CRUCIAL and EXTREMELY IMPORTANT: {keywords}. It's ESSENTIAL to use them appropriately and prominently in the generated content. DO NOT overlook them. \n\n{prompt}."
+    prompt_with_keywords = f"Keywords: {keywords}.\n\n{prompt}."
 
     system_message = {"role": "system", "content": LANGUAGES.get(language, LANGUAGES["English"])}
     user_message = {"role": "user", "content": prompt_with_keywords}
