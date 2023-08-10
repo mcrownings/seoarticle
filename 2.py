@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.26": "Added Content Types"
+    "1.25": "Removed optional h2"
 }
-APP_VERSION = "1.26"
+APP_VERSION = "1.25"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -55,35 +55,19 @@ def main():
     st.title('Content Generator')
     st.sidebar.text(f"App Version: {APP_VERSION}")
 
-    # Dropdown for content type selection
-    content_type = st.selectbox("Select Content Type:", ["Article", "Book Review", "Rewrite Content", "Product Review"])
-
-    language = st.selectbox("Choose a language:", ["English", "Swedish"], key="language_selectbox")
+    topic = st.text_input("Enter the Topic:", key="topic_input")
+    audience = st.text_input("Enter the Target Audience:", key="audience_input")
     keywords = st.text_input("Enter a list of keywords separated with comma:", key="keywords_input")
-
-    # Different prompts for each content type
-    if content_type == "Article":
-        topic = st.text_input("Enter the Topic:", key="topic_input")
-        audience = st.text_input("Enter the Target Audience:", key="audience_input")
-        prompt = f"""
-        Keywords: {keywords}.\n
-        Topic: {topic}.\n
-        Target audience: {audience}.\n
-        Here are some examples of real brand names for dog food:
-        Purina,
-        Royal Canin
-        """
-    elif content_type == "Book Review":
-        book_name = st.text_input("Enter Book Name:", key="book_name_input")
-        author = st.text_input("Enter Author's Name:", key="author_input")
-        prompt = f"Provide a review for the book '{book_name}' written by {author}. Keywords: {keywords}."
-    elif content_type == "Rewrite Content":
-        original_content = st.text_area("Enter the content to rewrite:", key="content_rewrite_input")
-        prompt = f"Rewrite the following content while keeping the essence intact. Keywords: {keywords}.\n\n{original_content}"
-    else: # Product Review
-        product_name = st.text_input("Enter Product Name:", key="product_name_input")
-        product_type = st.text_input("Enter Product Type:", key="product_type_input")
-        prompt = f"Provide a review for the {product_type} named '{product_name}'. Keywords: {keywords}."
+    language = st.selectbox("Choose a language:", ["English", "Swedish"], key="language_selectbox")
+    
+    prompt = f"""
+    Keywords: {keywords}.\n
+    Topic: {topic}.\n
+    Target audience: {audience}.\n
+    Here are some examples of real brand names for dog food:
+    Purina,
+    Royal Canin
+    """
 
     accumulated_content = ""
     if st.button("Generate Content", key="generate_button"):    
