@@ -26,9 +26,8 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     system_prompt_content = """You will be provided with a list of very important keywords, a topic and target audience, and your task is to generate an SEO-Optimized article. 
         Provide real brand names instead of placeholders. For example, instead of saying "Brand 1" write "DoorDash."
         Include a table of contents, FAQ with answers. 
-        Use Markdown language.
-        Speak with a confident, knowledgeable, neutral and clear tone of voice.
-        Special instructions for headline2: Only write a short sentence about the provided Headline2"""
+        Use HTML-Markdown language.
+        Speak with a confident, knowledgeable, neutral and clear tone of voice."""
 
     if language == "English":
         system_message = {"role": "system", "content": system_prompt_content}
