@@ -25,7 +25,11 @@ LANGUAGES = {
         Include a table of contents, FAQ with answers. 
         Use HTML-Markdown language.
         Speak with a confident, knowledgeable, neutral and clear tone of voice.""",
-    "Swedish": "Skriv allt på svenska. Du är en kunnig SEO-skribent. Skapa detaljerat, engagerande och SEO-optimerat innehåll. Du bör tala med en självsäker, kunnig, neutral och klar ton. Skriv aldrig slutsatser."
+    "Swedish": """Du kommer att få en lista med mycket viktiga nyckelord, ett ämne och en målgrupp, och din uppgift är att skapa en SEO-optimerad artikel.
+        Var noga med att ange riktiga varumärkesnamn istället för platshållare. Till exempel, istället för att säga "Varumärke 1", skriv "Apple."
+        Inkludera en innehållsförteckning, FAQ med svar.
+        Använd HTML-Markdown språk.
+        Tala med ett självsäkert, kunnigt, neutralt och klart tonfall."""
 }
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
@@ -40,6 +44,10 @@ def generate_content(prompt, previous_content="", language="English", keywords="
         messages.append({"role": "user", "content": previous_content})
     messages.append(user_message)
     
+    # Debug prints
+    st.write(f"System Message: {system_message['content']}")
+    st.write(f"User Message: {user_message['content']}")
+
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
