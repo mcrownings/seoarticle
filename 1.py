@@ -33,11 +33,9 @@ LANGUAGES = {
 }
 
 def generate_content(prompt, previous_content="", language="English", keywords=""):
-    
-    prompt_with_keywords = f"Keywords: {keywords}.\n\n{prompt}."
 
     system_message = {"role": "system", "content": LANGUAGES.get(language, LANGUAGES["English"])}
-    user_message = {"role": "user", "content": prompt_with_keywords}
+    user_message = {"role": "user", "content": prompt}
     
     messages = [system_message]
     if previous_content:
@@ -55,7 +53,6 @@ def generate_content(prompt, previous_content="", language="English", keywords="
         )
         return response.choices[0].message['content'].strip()
     except Exception as e:
-        # Handle the exception or return an error message
         return str(e)
 
 def main():
