@@ -27,7 +27,8 @@ def generate_content(prompt, previous_content="", language="English", keywords="
         Provide real brand names instead of placeholders. For example, instead of saying "Brand 1" write "DoorDash."
         Include a table of contents, FAQ with answers. 
         Use Markdown language.
-        Speak with a confident, knowledgeable, neutral and clear tone of voice."""
+        Speak with a confident, knowledgeable, neutral and clear tone of voice.
+        Special instructions for headline2: Only write a short sentence about the provided Headline2"""
 
     if language == "English":
         system_message = {"role": "system", "content": system_prompt_content}
@@ -49,7 +50,7 @@ def generate_content(prompt, previous_content="", language="English", keywords="
     return response.choices[0].message['content'].strip()
 
 def generate_h2_content(topic, audience, keywords, h2_header):
-    h2_prompt = f"Craft short, engaging and SEO-optimized content on the '{h2_header}', and relevant to the topic of '{topic}', while effectively capturing the attention of the '{audience}'. Keeping in mind these keywords: '{keywords}.'"
+    h2_prompt = f"Craft short, engaging and SEO-optimized content on the Headline2: '{h2_header}' while effectively capturing the attention of the '{audience}'. Keeping in mind these keywords: '{keywords}.'"
     return generate_content(h2_prompt, keywords=keywords)
 
 def main():
@@ -60,8 +61,6 @@ def main():
     audience = st.text_input("Enter the Target Audience:", key="audience_input")
     keywords = st.text_input("Enter a list of keywords separated with comma:", key="keywords_input")
     language = st.selectbox("Choose a language:", ["English", "Swedish"], key="language_selectbox")
-
-    #prompt = f"Write an article on '{topic}' while effectively capturing the attention of the '{audience}'. The article needs to be optimized for the keywords '{keywords}' and You SHOULD speak with a confident, knowledgeable, neutral and clear tone of voice. Include a table of contents, using Markdown language, The aim is to create valuable content that engages readers and satisfies SEO-needs."
     
     prompt = f"""
     Keywords: {keywords}
