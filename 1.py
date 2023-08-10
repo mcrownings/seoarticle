@@ -67,7 +67,7 @@ def main():
         # H2 sections
         for h2_header in h2_headers_inputs:
             if h2_header:
-                h2_prompt = f"Write a section on '{h2_header}' relevant to the topic of '{topic}' keeping in mind the keywords '{keywords}'"
+                h2_prompt = f"Craft short, engaging and SEO-optimized content on the '{h2_header}', and relevant to the topic of '{topic}', while effectively capturing the attention of the '{audience}' audience. Keeping in mind the keywords '{keywords}.'"
                 h2_content = generate_content(h2_prompt, accumulated_content, keywords=keywords)
                 accumulated_content += f"\n\n### {h2_header}\n\n{h2_content}"
                 st.write(f"### {h2_header}\n\n{h2_content}")
