@@ -77,7 +77,7 @@ def main():
         audience = st.text_input("Enter the Target Audience:", key="audience_input")
         prompt = f"""
         Keywords: {keywords}.\n
-        Topic: {topic}.\n
+        Please write me the first part of an article about: {topic}.\n
         Target audience: {audience}.\n
         Here are some examples of real brand names for dog food:
         Purina,
