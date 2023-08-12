@@ -35,11 +35,18 @@ Please write the first 3 headings of this article
 
 Respond in markdown. Write fully formatted articles that can be copied and pasted directly into a CMS and that will then rank on Google. Give your opinion on topics, but make sure to remain fairly neutral. Give real life examples occasionally. Every few paragraphs respond with a list or a table.
 """,
-    "Swedish": """Du kommer att få en lista med mycket viktiga nyckelord, ett ämne och en målgrupp, och din uppgift är att skapa en SEO-optimerad artikel.
-        Var noga med att ange riktiga varumärkesnamn istället för platshållare. Till exempel, istället för att säga "Varumärke 1", skriv "Apple."
-        Inkludera en innehållsförteckning, FAQ med svar.
-        Använd HTML-Markdown språk.
-        Tala med ett självsäkert, kunnigt, neutralt och klart tonfall."""
+    "Swedish": """Jag vill att du alltid har minst en intern länk i varje artikel du skriver. Du kommer att skriva för mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör försöka internt länka genom "ahref anchor text keywords" högst en gång per länk i varje artikel. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du skriver för SwedenMax.com, en svensk turistguide av en kille vid namn Max, från Stockholm. Dessa är mina turer. När du nämner en, skriv /stockholm/ följt av turens namn, till exempel /stockholm/skärgård.
+* Skärgård
+* Hallwylska museet
+* Kungliga slottet
+* Nationalmuseet
+* Vasamuseet
+* Moderna Museet
+* Skansen
+* Djurgården
+Vänligen skriv de tre första rubrikerna för denna artikel.
+Svara i markdown-format. Skriv fullständigt formaterade artiklar som direkt kan kopieras och klistras in i ett CMS och som sedan rankas på Google. Ge din åsikt om ämnen, men se till att förbli relativt neutral. Ge ibland verkliga exempel. Efter varje par stycken, svara med en lista eller en tabell.
+"""
 }
 
 # Initialize session state (if not already done)
