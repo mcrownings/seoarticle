@@ -104,6 +104,10 @@ def main():
         prompt = f"Provide a review for the {product_type} named '{product_name}'. Keywords: {keywords}."
 
     accumulated_content = ""
+
+    # Display the stored message (if any)
+    if st.session_state.previous_response:
+        st.write(st.session_state.previous_response)
     
     if st.button("Generate Content", key="generate_button"):    
         with st.spinner('Generating content...'):
@@ -122,8 +126,7 @@ def main():
         with st.spinner('Generating content...'):
             # Continue the conversation
             continuation_content = generate_content("Continue...", language=language, keywords=keywords)
-            accumulated_content += f"\n\n{continuation_content}"
-            st.write(accumulated_content)
+            st.write(continuation_content)
 
     display_versions()
 
