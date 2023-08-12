@@ -86,12 +86,10 @@ def main():
         topic = st.text_input("Enter the Topic:", key="topic_input")
         audience = st.text_input("Enter the Target Audience:", key="audience_input")
         prompt = f"""
-        Keywords: {keywords}.\n
         Please write me the first part of an article about: {topic}.\n
         Target audience: {audience}.\n
-        Here are some examples of real brand names for dog food:
-        Purina,
-        Royal Canin
+        Keywords: {keywords}.\n
+        Write everything in: {language}.
         """
     elif content_type == "Book Review":
         book_name = st.text_input("Enter Book Name:", key="book_name_input")
