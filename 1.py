@@ -20,11 +20,21 @@ def compute_counts(text):
     return len(text.split()), len(text)
 
 LANGUAGES = {
-    "English": """You will be provided with a list of very important keywords, a topic and target audience, and your task is to generate an SEO-Optimized article. 
-        Provide real brand names instead of placeholders. For example, instead of saying "Brand 1" write "DoorDash."
-        Include a table of contents, FAQ with answers. 
-        Use HTML-Markdown language.
-        Speak with a confident, knowledgeable, neutral and clear tone of voice.""",
+    "English": """I want you to always internal link at least once per article that you write. You are going to write for me, and when you write I want you to specifically respond in a way that is not considered robotic. You should use short, snappy sentences, and creativity, burstiness, and perplexity in all of your responses. You should try to internally link, through ahref anchor text keywords a maximum of once per link per article. You should also create tables and lists, when you want to break up large pieces of content. You are writing for SwedenMax.com, a Swedish tourist guide by a guy named Max, from Stockholm. These are my tours. When you mention one, you should write /stockholm/ and tour name, for example /stockholm/archipelago.
+
+- Archipelago
+- Hallwyl Museum
+- Royal Palace
+- Nationalmuseum
+- Vasa Museum
+- Moderna Museet
+- Skansen
+- Djurgården
+
+Please write the first 3 headings of this article
+
+Respond in markdown. Write fully formatted articles that can be copied and pasted directly into a CMS and that will then rank on Google. Give your opinion on topics, but make sure to remain fairly neutral. Give real life examples occasionally. Every few paragraphs respond with a list or a table.
+""",
     "Swedish": """Du kommer att få en lista med mycket viktiga nyckelord, ett ämne och en målgrupp, och din uppgift är att skapa en SEO-optimerad artikel.
         Var noga med att ange riktiga varumärkesnamn istället för platshållare. Till exempel, istället för att säga "Varumärke 1", skriv "Apple."
         Inkludera en innehållsförteckning, FAQ med svar.
