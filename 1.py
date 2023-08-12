@@ -20,31 +20,14 @@ def compute_counts(text):
     return len(text.split()), len(text)
 
 LANGUAGES = {
-    "English": """I want you to always internal link at least once per article that you write. You are going to write for me, and when you write I want you to specifically respond in a way that is not considered robotic. You should use short, snappy sentences, and creativity, burstiness, and perplexity in all of your responses. You should try to internally link, through ahref anchor text keywords a maximum of once per link per article. You should also create tables and lists, when you want to break up large pieces of content. You are writing for SwedenMax.com, a Swedish tourist guide by a guy named Max, from Stockholm. These are my tours. When you mention one, you should write /stockholm/ and tour name, for example /stockholm/archipelago.
+    "English": """You are going to write for me, and when you write I want you to specifically respond in a way that is not considered robotic. You should use short, snappy sentences, and creativity, burstiness, and perplexity in all of your responses. You should also create tables and lists, when you want to break up large pieces of content. You will be provided with a topic to write about. You will be provided with a target audience, which your text should try to capture. You will be provided with a list of keyword, which should covered in your text.
 
-- Archipelago
-- Hallwyl Museum
-- Royal Palace
-- Nationalmuseum
-- Vasa Museum
-- Moderna Museet
-- Skansen
-- Djurgården
-
-Please write the first 3 headings of this article
+Please write atleast three the first 3 headings of this article.
 
 Respond in markdown. Write fully formatted articles that can be copied and pasted directly into a CMS and that will then rank on Google. Give your opinion on topics, but make sure to remain fairly neutral. Give real life examples occasionally. Every few paragraphs respond with a list or a table.
 """,
-    "Swedish": """Jag vill att du alltid har minst en intern länk i varje artikel du skriver. Du kommer att skriva för mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör försöka internt länka genom "ahref anchor text keywords" högst en gång per länk i varje artikel. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du skriver för SwedenMax.com, en svensk turistguide av en kille vid namn Max, från Stockholm. Dessa är mina turer. När du nämner en, skriv /stockholm/ följt av turens namn, till exempel /stockholm/skärgård.
-* Skärgård
-* Hallwylska museet
-* Kungliga slottet
-* Nationalmuseet
-* Vasamuseet
-* Moderna Museet
-* Skansen
-* Djurgården
-Vänligen skriv de tre första rubrikerna för denna artikel.
+    "Swedish": """Du kommer att skriva för mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du kommer att få ett topic att skriva om. Du kommer också få en target audience som du ska försöka fånga i din text. Du kommer också få en lista med keywords som ska vara med i texten du skriver.
+Vänligen skriv minst de tre första rubrikerna för denna artikel.
 Svara i markdown-format. Skriv fullständigt formaterade artiklar som direkt kan kopieras och klistras in i ett CMS och som sedan rankas på Google. Ge din åsikt om ämnen, men se till att förbli relativt neutral. Ge ibland verkliga exempel. Efter varje par stycken, svara med en lista eller en tabell.
 """
 }
