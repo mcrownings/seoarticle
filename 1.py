@@ -42,22 +42,25 @@ Respond in markdown. Write fully formatted articles that can be copied and paste
         Tala med ett självsäkert, kunnigt, neutralt och klart tonfall."""
 }
 
-def generate_content(prompt, previous_content="", language="Swedish", keywords=""):
+# Initialize session state (if not already done)
+if "previous_response" not in st.session_state:
+    st.session_state.previous_response = ""
+
+def generate_content(prompt, language="Swedish", keywords=""):
 
     system_message = {"role": "system", "content": LANGUAGES.get(language, LANGUAGES["English"])}
     user_message = {"role": "user", "content": prompt}
-    
-    messages = [system_message]
-    if previous_content:
-        messages.append({"role": "user", "content": previous_content})
-    messages.append(user_message)
-    
+
+    # Add previous response to the messages if exists
+    messages = [{"role": "system", "content": st.session_state.previous_response}, system_message, user_message]
+
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=messages
         )
-        return response.choices[0].message['content'].strip()
+        st.session_state.previous_response = response.choices[0].message['content'].strip()  # Save the response
+        return st.session_state.previous_response
     except Exception as e:
         return str(e)
 
@@ -96,6 +99,7 @@ def main():
         prompt = f"Provide a review for the {product_type} named '{product_name}'. Keywords: {keywords}."
 
     accumulated_content = ""
+    
     if st.button("Generate Content", key="generate_button"):    
         with st.spinner('Generating content...'):
             # Main article content
@@ -107,6 +111,14 @@ def main():
             word_count, char_count = compute_counts(accumulated_content)
             st.sidebar.text(f"Total Word Count: {word_count}")
             st.sidebar.text(f"Total Character Count: {char_count}")
+
+    # Button to continue the conversation based on the previous response
+    if st.session_state.previous_response and st.button("Continue Conversation", key="continue_button"):
+        with st.spinner('Generating content...'):
+            # Continue the conversation
+            continuation_content = generate_content("Continue...", language=language, keywords=keywords)
+            accumulated_content += f"\n\n{continuation_content}"
+            st.write(accumulated_content)
 
     display_versions()
 
