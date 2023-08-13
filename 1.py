@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.26": "Added Content Types"
+    "1.27": "Reset session"
 }
-APP_VERSION = "1.26"
+APP_VERSION = "1.27"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -94,6 +94,7 @@ def main():
     
     if st.button("Generate Content", key="generate_button"):    
         with st.spinner('Generating content...'):
+            st.session_state.previous_response = ""  # Resetting previous response
             # Main article content
             article_content = generate_content(prompt, language=language, keywords=keywords)
             accumulated_content += f"{article_content}\n"
@@ -103,6 +104,7 @@ def main():
             word_count, char_count = compute_counts(accumulated_content)
             st.sidebar.text(f"Total Word Count: {word_count}")
             st.sidebar.text(f"Total Character Count: {char_count}")
+
 
     # Button to continue the conversation based on the previous response
     if st.session_state.previous_response and st.button("Continue Conversation", key="continue_button"):
