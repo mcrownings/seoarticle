@@ -26,9 +26,9 @@ Please write atleast three the first 3 headings of this article.
 
 Respond in markdown. Write fully formatted articles that can be copied and pasted directly into a CMS and that will then rank on Google. Give your opinion on topics, but make sure to remain fairly neutral. Give real life examples occasionally. Every few paragraphs respond with a list or a table.
 """,
-    "Swedish": """Du kommer att skriva för mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du kommer att få ett topic att skriva om. Du kommer också få en target audience som du ska försöka fånga i din text. Du kommer också få en lista med keywords som ska vara med i texten du skriver.
-Vänligen skriv minst de tre första rubrikerna för denna artikel.
-Svara i markdown-format. Skriv fullständigt formaterade artiklar som direkt kan kopieras och klistras in i ett CMS och som sedan rankas på Google. Ge din åsikt om ämnen, men se till att förbli relativt neutral. Ge ibland verkliga exempel. Efter varje par stycken, svara med en lista eller en tabell.
+    "Swedish": """Du ska att skriva åt mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du kommer att få ett ämne(topic) att skriva om. Du kommer också få en målgrupp(target audience) som du ska försöka fånga med din text. Du kommer också få en lista med sökord(keywords) som ska vara med i texten du skriver.
+Skriv minst tre av första rubrikerna för denna artikel.
+Svara alltid i markdown-format. Skriv fullständigt formaterade artiklar som direkt kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. Ge din åsikt om ämnen, men se till att förbli relativt neutral. Ge ibland verkliga exempel. Efter några stycken, svara med en lista eller en tabell.
 """
 }
 
