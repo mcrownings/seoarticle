@@ -30,7 +30,7 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
 """,
     "Swedish": """När du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Jag kommer att ge dig ett ämne, en målgrupp och några sökord som du SKA inkludera i din text.
 
-Skriv minst tre rubriker för denna artikel.
+Skriv minst tre rubriker för denna artikel och ge en kort beskrivning eller textstycke under varje rubrik.
 
 Skriv alla rubriker, listor, tabeller och länkar i markdown. Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. Ibland kan du ge verkliga exempel. Efter några textstycken, svara gärna med en uträkning, lista eller en tabell.
 
