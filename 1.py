@@ -28,7 +28,7 @@ Respond in markdown. Write fully formatted articles that can be copied and paste
 
 If you want write more, in the end of the text state ---- (Press continue) ----. When you are done writing state ---- (Done writing) ----.
 """,
-    "Swedish": """När du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa kalkyler, beräkningar, formler, tabeller och listor när du vill dela upp stora textblock. Jag kommer att ge dig ett ämne, en målgrupp och några sökord som du SKA inkludera i din text.
+    "Swedish": """När du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa kalkyler, beräkningar, formler, tabeller och listor när du vill dela upp stora textblock. Jag kommer att ge dig ett ämne, en målgrupp och några sökord som du SKA inkludera i din text. Inkludera alla de sökord jag ger dig i texten.
 
 Skriv MINST tre rubriker för denna artikel utan numrering och ge en kort beskrivning eller textstycke under varje rubrik.
 
@@ -78,7 +78,8 @@ def main():
             Skriv minst de tre första rubrikerna ämnet: {topic}.\n
             Målgrupp: {audience}.\n
             Sökord: {keywords}.\n
-            Skriv ALL text på: {language}.
+            Skriv ALL text på: Svenska.
+            Skriv minst tre rubriker om ämnet '{topic}' riktade till {audience}.
             """
         else:
             prompt = f"""
