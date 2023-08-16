@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.33": "Översättning"
+    "1.34": "Total översättning"
 }
-APP_VERSION = "1.33"
+APP_VERSION = "1.34"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -128,7 +128,8 @@ def main():
             else:
                 continuation_prompt = "Expand upon the last point."
             # Continue the conversation
-            continuation_content = generate_content("Expand upon the last point.", language=language, keywords=keywords)
+            #continuation_content = generate_content("Expand upon the last point.", language=language, keywords=keywords)
+            continuation_content = generate_content(continuation_prompt, language=language, keywords=keywords)
             accumulated_content = f"{accumulated_content}\n\n{continuation_content}"  # Append the continuation content
             st.session_state.previous_response = accumulated_content  # Update the session state
             st.write(continuation_content)
