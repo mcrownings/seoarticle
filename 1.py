@@ -26,7 +26,7 @@ Please write atleast three the first 3 headings of this article.
 
 Respond in markdown. Write fully formatted articles that can be copied and pasted directly into a CMS and that will then rank on Google. Give your opinion on topics, but make sure to remain fairly neutral. Give real life examples occasionally. Every few paragraphs respond with a list or a table.
 
-If you want write more, in the end of the text state NOT FINISHED. When you are done writing state DONE.
+If you want write more, in the end of the text state Press continue. When you are done writing state Done writing.
 """,
     "Swedish": """Du ska att skriva åt mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du kommer att få ett ämne(topic) att skriva om. Du kommer också få en målgrupp(target audience) som du ska försöka fånga med din text. Du kommer också få en lista med sökord(keywords) som ska vara med i texten du skriver.
 Skriv minst tre av första rubrikerna för denna artikel.
