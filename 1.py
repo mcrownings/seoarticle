@@ -71,14 +71,22 @@ def main():
 
     # Different prompts for each content type
     if content_type == "Article":
-        topic = st.text_input("Enter the Topic:", key="topic_input")
-        audience = st.text_input("Enter the Target Audience:", key="audience_input")
-        prompt = f"""
-        Please write me the first part of an article about: {topic}.\n
-        Target audience: {audience}.\n
-        Keywords: {keywords}.\n
-        Write everything in: {language}.
-        """
+        topic = st.text_input("Enter the Topic:" if language != "Swedish" else "Ange ämnet:", key="topic_input")
+        audience = st.text_input("Enter the Target Audience:" if language != "Swedish" else "Ange målgruppen:", key="audience_input")
+        if language == "Swedish":
+            prompt = f"""
+            Skriv minst tre rubriker för denna artikel: {topic}.\n
+            Målgrupp: {audience}.\n
+            Sökord artikeln ska ranka på: {keywords}.\n
+            Skriv ALL text på: {language}.
+            """
+        else:
+            prompt = f"""
+            Please write me the first part of an article about: {topic}.\n
+            Target audience: {audience}.\n
+            Keywords: {keywords}.\n
+            Write everything in: {language}.
+            """
     elif content_type == "Book Review":
         book_name = st.text_input("Enter Book Name:", key="book_name_input")
         author = st.text_input("Enter Author's Name:", key="author_input")
