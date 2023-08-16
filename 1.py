@@ -124,7 +124,7 @@ def main():
     if st.session_state.previous_response and st.button("Continue Conversation", key="continue_button"):
         with st.spinner('Generating content...'):
             if language == "Swedish":
-                continuation_prompt = "Fortsätt skriva från sista punkten."
+                continuation_prompt = "..."
             else:
                 continuation_prompt = "Expand upon the last point."
             # Continue the conversation
