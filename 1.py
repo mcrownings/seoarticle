@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.30": "Fixed word/char-count"
+    "1.31": "Prompts"
 }
-APP_VERSION = "1.30"
+APP_VERSION = "1.31"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -34,9 +34,8 @@ Skriv alltid minst tre av de första rubrikerna för denna artikel.
 
 Svara i markdown. Skriv fullständigt formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. Ge din åsikt om ämnen, men se till att förbli relativt neutral. Ibland kan du ge verkliga exempel. Efter några textstycken, svara med en uträkning, lista eller en tabell.
 
-Om du vill skriva mer deklarera ---- (Tryck fortsätt!) ——. Om du har skrivit klart deklarera ---- (Klar!) ——.
-"""
-}
+Om du har mer att skriva, skriv ---- (Tryck fortsätt!) ——. Om du har skrivit klart, skriv ---- (Klar!) ——.
+"""}
 
 # Initialize session state (if not already done)
 if "previous_response" not in st.session_state:
