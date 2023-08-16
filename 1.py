@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.32": "Prompts"
+    "1.33": "Översättning"
 }
-APP_VERSION = "1.32"
+APP_VERSION = "1.33"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -115,6 +115,10 @@ def main():
     # Button to continue the conversation based on the previous response
     if st.session_state.previous_response and st.button("Continue Conversation", key="continue_button"):
         with st.spinner('Generating content...'):
+            if language == "Swedish":
+                continuation_prompt = "Fortsätt skriva från sista punkten."
+            else:
+                continuation_prompt = "Expand upon the last point."
             # Continue the conversation
             continuation_content = generate_content("Expand upon the last point.", language=language, keywords=keywords)
             accumulated_content = f"{accumulated_content}\n\n{continuation_content}"  # Append the continuation content
