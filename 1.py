@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.34": "Total översättning"
+    "1.35": "Nya prompts"
 }
-APP_VERSION = "1.34"
+APP_VERSION = "1.35"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -28,11 +28,11 @@ Respond in markdown. Write fully formatted articles that can be copied and paste
 
 If you want write more, in the end of the text state ---- (Press continue) ----. When you are done writing state ---- (Done writing) ----.
 """,
-    "Swedish": """Du ska att skriva åt mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du kommer att få ett ämne att skriva om. Du kommer också få en målgrupp som du ska försöka fånga med din text. Du kommer också få en ett antal sökord som SKA finnas med i texten du skriver.
+    "Swedish": """När du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Jag kommer att ge dig ett ämne, en målgrupp och några sökord som du SKA inkludera i din text.
 
 Skriv minst tre rubriker för denna artikel.
 
-Svara i markdown. Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. Ge din åsikt om ämnen, men se till att förbli relativt neutral. Ibland kan du ge verkliga exempel. Efter några textstycken, svara gärna med en uträkning, lista eller en tabell.
+Skriv alla rubriker, listor, tabeller och länkar i markdown. Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. Ibland kan du ge verkliga exempel. Efter några textstycken, svara gärna med en uträkning, lista eller en tabell.
 
 Om du vill skriva mer, skriv ALLTID ---- (Tryck fortsätt!) ——. Om du har skrivit klart, skriv ALLTID ---- (Klar!) ——.
 """}
