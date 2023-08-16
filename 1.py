@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.31": "Prompts"
+    "1.32": "Prompts"
 }
-APP_VERSION = "1.31"
+APP_VERSION = "1.32"
 
 def display_versions():
     st.sidebar.title("Version Changes")
