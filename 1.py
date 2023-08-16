@@ -75,7 +75,7 @@ def main():
         audience = st.text_input("Enter the Target Audience:" if language != "Swedish" else "Ange målgruppen:", key="audience_input")
         if language == "Swedish":
             prompt = f"""
-            Skriv minst de tre första rubrikerna ämnet: {topic}.\n
+            Skriv en artikel Ämnet: {topic}.\n
             Målgrupp: {audience}.\n
             Sökord: {keywords}.\n
             Skriv ALL text på: Svenska.
