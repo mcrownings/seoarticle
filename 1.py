@@ -28,13 +28,13 @@ Respond in markdown. Write fully formatted articles that can be copied and paste
 
 If you want write more, in the end of the text state ---- (Press continue) ----. When you are done writing state ---- (Done writing) ----.
 """,
-    "Swedish": """Du ska att skriva åt mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du kommer att få ett ämne(topic) att skriva om. Du kommer också få en målgrupp(target audience) som du ska försöka fånga med din text. Du kommer också få en lista med sökord(keywords) som ska vara med i texten du skriver.
+    "Swedish": """Du ska att skriva åt mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du kommer att få ett ämne att skriva om. Du kommer också få en målgrupp som du ska försöka fånga med din text. Du kommer också få en lista med sökord som ska vara med i texten du skriver.
 
 Skriv minst tre rubriker för denna artikel.
 
-Svara i markdown. Skriv fullständigt formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. Ge din åsikt om ämnen, men se till att förbli relativt neutral. Ibland kan du ge verkliga exempel. Efter några textstycken, svara med en uträkning, lista eller en tabell.
+Svara i markdown. Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. Ge din åsikt om ämnen, men se till att förbli relativt neutral. Ibland kan du ge verkliga exempel. Efter några textstycken, svara med en uträkning, lista eller en tabell.
 
-Om du har mer att skriva, skriv ---- (Tryck fortsätt!) ——. Om du har skrivit klart, skriv ---- (Klar!) ——.
+Om du har mer att skriva, skriv ALLTID ---- (Tryck fortsätt!) ——. Om du har skrivit klart, skriv ALLTID ---- (Klar!) ——.
 """}
 
 # Initialize session state (if not already done)
@@ -75,9 +75,9 @@ def main():
         audience = st.text_input("Enter the Target Audience:" if language != "Swedish" else "Ange målgruppen:", key="audience_input")
         if language == "Swedish":
             prompt = f"""
-            Skriv minst tre rubriker för denna artikel: {topic}.\n
+            Skriv minst de tre första rubrikerna ämnet: {topic}.\n
             Målgrupp: {audience}.\n
-            Sökord artikeln ska ranka på: {keywords}.\n
+            Sökord: {keywords}.\n
             Skriv ALL text på: {language}.
             """
         else:
@@ -128,7 +128,6 @@ def main():
             else:
                 continuation_prompt = "Expand upon the last point."
             # Continue the conversation
-            #continuation_content = generate_content("Expand upon the last point.", language=language, keywords=keywords)
             continuation_content = generate_content(continuation_prompt, language=language, keywords=keywords)
             accumulated_content = f"{accumulated_content}\n\n{continuation_content}"  # Append the continuation content
             st.session_state.previous_response = accumulated_content  # Update the session state
