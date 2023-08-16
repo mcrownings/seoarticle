@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.27": "Reset session"
+    "1.28": "Session state"
 }
-APP_VERSION = "1.27"
+APP_VERSION = "1.28"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -90,15 +90,16 @@ def main():
 
     # Display the stored message (if any)
     if st.session_state.previous_response:
-        st.write(st.session_state.previous_response)
+        accumulated_content = st.session_state.previous_response
+        st.write(accumulated_content)
     
     if st.button("Generate Content", key="generate_button"):    
         with st.spinner('Generating content...'):
-            st.session_state.previous_response = ""  # Resetting previous response
             # Main article content
             article_content = generate_content(prompt, language=language, keywords=keywords)
-            accumulated_content += f"{article_content}\n"
-            st.write(accumulated_content)
+            accumulated_content = f"{accumulated_content}\n\n{article_content}"  # Append the new content
+            st.session_state.previous_response = accumulated_content  # Update the session state
+            st.write(article_content)
 
             # Display counts
             word_count, char_count = compute_counts(accumulated_content)
@@ -110,8 +111,15 @@ def main():
     if st.session_state.previous_response and st.button("Continue Conversation", key="continue_button"):
         with st.spinner('Generating content...'):
             # Continue the conversation
-            continuation_content = generate_content("Continue...", language=language, keywords=keywords)
+            continuation_content = generate_content("Expand upon the last point.", language=language, keywords=keywords)
+            accumulated_content = f"{accumulated_content}\n\n{continuation_content}"  # Append the continuation content
+            st.session_state.previous_response = accumulated_content  # Update the session state
             st.write(continuation_content)
+
+    # Button to reset the session state
+    if st.button("Reset Session", key="reset_button"):
+        st.session_state.previous_response = ""
+        st.write("Session has been reset!")
 
     display_versions()
 
