@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.29": "Rerun implemented"
+    "1.30": "Fixed word/char-count"
 }
-APP_VERSION = "1.29"
+APP_VERSION = "1.30"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -26,7 +26,7 @@ Please write atleast three the first 3 headings of this article.
 
 Respond in markdown. Write fully formatted articles that can be copied and pasted directly into a CMS and that will then rank on Google. Give your opinion on topics, but make sure to remain fairly neutral. Give real life examples occasionally. Every few paragraphs respond with a list or a table.
 
-If you want write more, in the end of the text state Press continue. When you are done writing state Done writing.
+If you want write more, in the end of the text state (Press continue). When you are done writing state (Done writing).
 """,
     "Swedish": """Du ska att skriva åt mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du kommer att få ett ämne(topic) att skriva om. Du kommer också få en målgrupp(target audience) som du ska försöka fånga med din text. Du kommer också få en lista med sökord(keywords) som ska vara med i texten du skriver.
 Skriv minst tre av första rubrikerna för denna artikel.
@@ -104,9 +104,9 @@ def main():
             st.write(article_content)
 
             # Display counts
-            word_count, char_count = compute_counts(accumulated_content)
-            st.sidebar.text(f"Total Word Count: {word_count}")
-            st.sidebar.text(f"Total Character Count: {char_count}")
+            #word_count, char_count = compute_counts(accumulated_content)
+            #st.sidebar.text(f"Total Word Count: {word_count}")
+            #st.sidebar.text(f"Total Character Count: {char_count}")
 
 
     # Button to continue the conversation based on the previous response
@@ -117,6 +117,11 @@ def main():
             accumulated_content = f"{accumulated_content}\n\n{continuation_content}"  # Append the continuation content
             st.session_state.previous_response = accumulated_content  # Update the session state
             st.write(continuation_content)
+    
+    if accumulated_content:
+        word_count, char_count = compute_counts(accumulated_content)
+        st.sidebar.text(f"Total Word Count: {word_count}")
+        st.sidebar.text(f"Total Character Count: {char_count}")
 
     # Button to reset the session state
     if st.button("Reset Session", key="reset_button"):
