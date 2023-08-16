@@ -30,7 +30,7 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
 """,
     "Swedish": """Du ska att skriva åt mig, och när du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa tabeller och listor när du vill dela upp stora textblock. Du kommer att få ett ämne(topic) att skriva om. Du kommer också få en målgrupp(target audience) som du ska försöka fånga med din text. Du kommer också få en lista med sökord(keywords) som ska vara med i texten du skriver.
 
-Skriv alltid minst tre av de första rubrikerna för denna artikel.
+Skriv minst tre rubriker för denna artikel.
 
 Svara i markdown. Skriv fullständigt formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. Ge din åsikt om ämnen, men se till att förbli relativt neutral. Ibland kan du ge verkliga exempel. Efter några textstycken, svara med en uträkning, lista eller en tabell.
 
