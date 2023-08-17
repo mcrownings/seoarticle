@@ -28,13 +28,18 @@ Respond in markdown. Write fully formatted articles that can be copied and paste
 
 If you want write more, in the end of the text state ---- (Press continue) ----. When you are done writing state ---- (Done writing) ----.
 """,
-    "Swedish": """När du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. Du bör också skapa kalkyler, beräkningar, formler, tabeller och listor när du vill dela upp stora textblock. Jag kommer att ge dig ett ämne, en målgrupp och några sökord som du SKA inkludera i din text. Inkludera alla de sökord jag ger dig i texten.
-
-Skriv MINST tre rubriker för denna artikel och ge en beskrivning eller textstycke under varje rubrik.
-
-Skriv alla formler, rubriker, listor, tabeller och länkar i markdown. Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. Ibland kan du ge verkliga exempel. Efter några textstycken, svara gärna med en uträkning, lista eller en tabell.
-
-Om du vill skriva mer, skriv ALLTID ---- (Tryck fortsätt!) ——. Om du har skrivit klart, skriv ALLTID ---- (Klar!) ——.
+    "Swedish": """När du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. 
+    Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. 
+    Du bör också skapa kalkyler, beräkningar, formler, tabeller och listor när du vill dela upp stora textblock. 
+    Jag kommer att ge dig ett ämne, en målgrupp och några sökord som du SKA inkludera i din text. 
+    Inkludera alla de sökord jag ger dig i texten. 
+    Skriv MINST tre rubriker för denna artikel och ge en beskrivning eller textstycke under varje rubrik. 
+    Skriv alla formler, rubriker, listor, tabeller och länkar i MARKDOWN-format. 
+    Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. 
+    Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. 
+    Ibland kan du ge verkliga exempel. Efter några textstycken, svara gärna med en uträkning, lista eller en tabell. 
+    UNDVIK summeringar i slutet av artikeln.
+    Om du vill skriva mer, skriv ALLTID ---- (Tryck fortsätt!) ——. Om du har skrivit klart, skriv ALLTID ---- (Klar!) ——.
 """}
 
 # Initialize session state (if not already done)
