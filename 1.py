@@ -6,9 +6,9 @@ MAX_HEADLINES = 5
 MIN_HEADLINES = 1
 
 VERSIONS = {
-    "1.35": "Nya prompts"
+    "1.36": "Översättning"
 }
-APP_VERSION = "1.35"
+APP_VERSION = "1.36"
 
 def display_versions():
     st.sidebar.title("Version Changes")
@@ -71,7 +71,7 @@ def main():
     content_type = st.selectbox("Select Content Type:", ["Article", "Book Review", "Rewrite Content", "Product Review"])
 
     language = st.selectbox("Choose a language:", ["English", "Swedish"], key="language_selectbox")
-    keywords = st.text_input("Enter a list of keywords separated with comma:", key="keywords_input")
+    keywords = st.text_input("Enter a list of keywords separated with comma:" if language != "Swedish" else "Skriv in dina sökord separerade med comma:", key="keywords_input")
 
     # Different prompts for each content type
     if content_type == "Article":
