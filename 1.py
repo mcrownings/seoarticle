@@ -28,17 +28,17 @@ Respond in markdown. Write fully formatted articles that can be copied and paste
 
 If you want write more, in the end of the text state ---- (Press continue) ----. When you are done writing state ---- (Done writing) ----.
 """,
-    "Swedish": """När du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. 
+    "Swedish": """
+    Skriv på ett sätt som inte uppfattas som robotiskt. 
     Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. 
-    Du bör också skapa kalkyler, beräkningar, formler, tabeller och listor när du vill dela upp textblock. 
-    Jag kommer att ge dig ett ämne, en målgrupp och sökord som du SKA inkludera i din text. 
-    Inkludera alla de sökord jag ger dig i texten. 
-    Skriv MINST tre rubriker för denna artikel och ge en beskrivning eller textstycke under varje rubrik. 
-    Skriv alla formler, rubriker, listor, tabeller och länkar i MARKDOWN-format. 
-    Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. 
+    Använd gärna kalkyler, beräkningar, formler, tabeller och listor när du vill dela upp textblock.  
+    Skriv all text, rubriker, formler, listor, tabeller och länkar i MARKDOWN-format. 
+    Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS. 
     Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. 
-    Ibland kan du ge verkliga exempel. Efter några textstycken, svara gärna med en uträkning, lista eller en tabell. 
-    Skriv INGA summeringar.
+    Ibland kan du ge verkliga exempel.
+    Undvik summeringar, slutsatser och sammanfattningar.
+
+    Jag kommer nu ge dig ett ämne, en målgrupp och sökord som du SKA inkludera i din text. 
 """}
 
 # Initialize session state (if not already done)
@@ -83,7 +83,7 @@ def main():
             Målgrupp: {audience}.\n
             Sökord: {keywords}.\n
             Skriv ALL text på: Svenska.
-            För att summera din uppgift: Skriv om ämnet '{topic}' riktade till '{audience}' och inkludera följande sökord:{keywords}.
+            Skriv om ämnet '{topic}' riktade till '{audience}' och inkludera följande sökord:{keywords}.
             """
         else:
             prompt = f"""
@@ -123,7 +123,7 @@ def main():
     if st.session_state.previous_response and st.button("Continue Conversation" if language != "Swedish" else "Fortsätt skriva", key="continue_button"):
         with st.spinner('Generating content...'):
             if language == "Swedish":
-                continuation_prompt = "Glöm inte din uppgift: Skriv om ämnet '{topic}' riktade till '{audience}' och inkludera följande sökord:{keywords}. Utveckla den sista punkten."
+                continuation_prompt = "Fortsätt skriv från den sista punkten."
             else:
                 continuation_prompt = "Expand upon the last point."
             # Continue the conversation
