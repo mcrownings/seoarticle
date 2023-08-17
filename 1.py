@@ -83,7 +83,7 @@ def main():
             Målgrupp: {audience}.\n
             Sökord: {keywords}.\n
             Skriv ALL text på: Svenska.
-            Skriv om ämnet '{topic}' riktade till '{audience}' och inkludera följande sökord:{keywords}.
+            Skriv osammanfattat om ämnet '{topic}' riktade till '{audience}' och inkludera följande sökord:{keywords}.
             """
         else:
             prompt = f"""
