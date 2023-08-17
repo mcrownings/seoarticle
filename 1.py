@@ -37,6 +37,7 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. 
     Ibland kan du ge verkliga exempel.
     Undvik summeringar, slutsatser och sammanfattningar.
+    Skriv minst tre rubriker, jag förväntar mig en lång text.
 
     Jag kommer nu ge dig ett ämne, en målgrupp och sökord som du SKA inkludera i din text. 
 """}
