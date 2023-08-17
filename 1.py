@@ -37,6 +37,7 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. 
     Ibland kan du ge verkliga exempel.
     Skriv minst tre rubriker, jag förväntar mig en lång text.
+    Avsluta texten som om artikeln skulle ännu längre.
 
     Jag kommer nu ge dig ett ämne, en målgrupp och sökord som du SKA inkludera i din text. 
 """}
@@ -83,7 +84,7 @@ def main():
             Målgrupp: {audience}.\n
             Sökord: {keywords}.\n
             Skriv ALL text på: Svenska.
-            Skriv osammanfattat om ämnet '{topic}' riktade till '{audience}' och inkludera följande sökord:{keywords}.
+            Skriv om ämnet '{topic}' riktade till '{audience}' och inkludera följande sökord:{keywords}.
             """
         else:
             prompt = f"""
