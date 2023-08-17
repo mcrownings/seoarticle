@@ -30,15 +30,15 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
 """,
     "Swedish": """När du skriver vill jag att du svarar på ett sätt som inte uppfattas som robotiskt. 
     Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. 
-    Du bör också skapa kalkyler, beräkningar, formler, tabeller och listor när du vill dela upp stora textblock. 
-    Jag kommer att ge dig ett ämne, en målgrupp och några sökord som du SKA inkludera i din text. 
+    Du bör också skapa kalkyler, beräkningar, formler, tabeller och listor när du vill dela upp textblock. 
+    Jag kommer att ge dig ett ämne, en målgrupp och sökord som du SKA inkludera i din text. 
     Inkludera alla de sökord jag ger dig i texten. 
     Skriv MINST tre rubriker för denna artikel och ge en beskrivning eller textstycke under varje rubrik. 
     Skriv alla formler, rubriker, listor, tabeller och länkar i MARKDOWN-format. 
     Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS och som sedan ska ranka på Google. 
     Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. 
     Ibland kan du ge verkliga exempel. Efter några textstycken, svara gärna med en uträkning, lista eller en tabell. 
-    INGA summeringar i slutet.
+    Skriv INGA summeringar.
 """}
 
 # Initialize session state (if not already done)
@@ -129,7 +129,7 @@ def main():
     if st.session_state.previous_response and st.button("Continue Conversation", key="continue_button"):
         with st.spinner('Generating content...'):
             if language == "Swedish":
-                continuation_prompt = "Utveckla den sista punkten."
+                continuation_prompt = "Glöm inte din uppgift: Skriv om ämnet '{topic}' riktade till '{audience}' och inkludera följande sökord:{keywords}. Utveckla den sista punkten."
             else:
                 continuation_prompt = "Expand upon the last point."
             # Continue the conversation
