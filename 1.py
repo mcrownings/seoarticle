@@ -39,7 +39,6 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. 
     Ibland kan du ge verkliga exempel. Efter några textstycken, svara gärna med en uträkning, lista eller en tabell. 
     INGA summeringar i slutet.
-    Om du vill skriva mer, skriv ALLTID ---- (Tryck fortsätt!) ——. Om du har skrivit klart, skriv ALLTID ---- (Klar!) ——.
 """}
 
 # Initialize session state (if not already done)
