@@ -111,7 +111,7 @@ def main():
         accumulated_content = st.session_state.previous_response
         st.write(accumulated_content)
     
-    if st.button("Generate Content", key="generate_button"):    
+    if st.button("Generate Content" if language != "Swedish" else "Börja skriv", key="generate_button"):    
         with st.spinner('Generating content...'):
             # Main article content
             article_content = generate_content(prompt, language=language, keywords=keywords)
@@ -119,14 +119,8 @@ def main():
             st.session_state.previous_response = accumulated_content  # Update the session state
             st.write(article_content)
 
-            # Display counts
-            #word_count, char_count = compute_counts(accumulated_content)
-            #st.sidebar.text(f"Total Word Count: {word_count}")
-            #st.sidebar.text(f"Total Character Count: {char_count}")
-
-
     # Button to continue the conversation based on the previous response
-    if st.session_state.previous_response and st.button("Continue Conversation", key="continue_button"):
+    if st.session_state.previous_response and st.button("Continue Conversation" if language != "Swedish" else "Fortsätt skriva", key="continue_button"):
         with st.spinner('Generating content...'):
             if language == "Swedish":
                 continuation_prompt = "Glöm inte din uppgift: Skriv om ämnet '{topic}' riktade till '{audience}' och inkludera följande sökord:{keywords}. Utveckla den sista punkten."
