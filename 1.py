@@ -138,7 +138,7 @@ def main():
         st.sidebar.text(f"Total Character Count: {char_count}")
 
     # Button to reset the session state
-    if st.button("Reset Session", key="reset_button"):
+    if st.button("Reset Session" if language != "Swedish" else "Börja om", key="reset_button"):
         st.session_state.previous_response = ""
         st.experimental_rerun()
 
