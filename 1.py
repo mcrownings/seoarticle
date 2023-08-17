@@ -64,7 +64,7 @@ def generate_content(prompt, language="Swedish", keywords=""):
         return str(e)
 
 def main():
-    st.title('Content Generator')
+    st.title('SEO Content GEN')
     st.sidebar.text(f"App Version: {APP_VERSION}")
 
     # Dropdown for content type selection
