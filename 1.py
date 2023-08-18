@@ -38,6 +38,7 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     Ibland kan du ge verkliga exempel.
     Skriv minst tre rubriker, jag förväntar mig en lång text.
     Skriv som att artikeln aldrig ska bli klar.
+    Skriv korrekta svenska begrepp.
 
     Jag kommer nu ge dig ett ämne, en målgrupp och sökord som du SKA inkludera i din text. 
 """}
