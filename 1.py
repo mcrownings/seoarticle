@@ -40,6 +40,11 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     Skriv som att artikeln aldrig ska bli klar.
     Skriv korrekta svenska begrepp.
 
+    Avända punktlistor för att göra skälen mer läsbara. Till exemepl:
+    En indikation på effektiviteten av din marknadsföringsstrategi.
+    Ett mått på annonsexponering.
+    Ett verktyg för jämförelse av olika annonser eller kampanjer.
+
     Jag kommer nu ge dig ett ämne, en målgrupp och sökord som du SKA inkludera i din text. 
 """}
 
