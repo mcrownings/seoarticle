@@ -31,7 +31,7 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     "Swedish": """
     Skriv på ett sätt som inte uppfattas som robotiskt. 
     Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. 
-    Skriv kalkyler, beräkningar, formler, tabeller och punktlistor när du vill dela upp textblock.  
+    Skriv kalkyler, beräkningar, formler, tabeller och punktlistor för att bryta upp texten och göra den mer läsbar.
     Skriv i Markdown.
     Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS. 
     Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. 
@@ -48,9 +48,11 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
 
     Anpassa språket till Svenska, till exempel: 
     'Ett högt CTR-värde indikerar att din annons är intressant och lockar människor att klicka på den.'
-    kan skrivas om till: 'Ett högt CTR-värde visar att din annons väcker intresse och motiverar till klick.'
+    kan skrivas om till: 'Ett högt CTR-värde visar att din annons väcker intresse och motiverar till klick.'.
 
-    Se till att sökorden förekommer naturligt i texten flera gånger, men undvik att överanvända dem så att texten fortfarande känns naturlig
+    Om du nämner "låg kvalitet" måste du Förtydliga vad du menar med "låg kvalitet" eller ge exempel.
+
+    Skriv så att sökorden förekommer naturligt i texten flera gånger, men skriv så att texten fortfarande känns naturlig.
 
     Skriv ALLTID strukturerad rubrikhierarki, i Markdown. Till exempel: "Vad är CTR?" kan vara din H1-rubrik, medan underrubrikerna kan vara H2 (ex. "Här är några skäl till varför CTR är en viktig mätning inom digital marknadsföring") och eventuellt H3 för underpunkter.
 
