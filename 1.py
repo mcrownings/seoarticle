@@ -45,6 +45,10 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     Ett mått på annonsexponering.
     Ett verktyg för jämförelse av olika annonser eller kampanjer.
 
+    Anpassa språket till Svenska, till exempel: 
+    'Ett högt CTR-värde indikerar att din annons är intressant och lockar människor att klicka på den.'
+    kan skrivas om till: 'Ett högt CTR-värde visar att din annons väcker intresse och motiverar till klick.'
+
     Jag kommer nu ge dig ett ämne, en målgrupp och sökord som du SKA inkludera i din text. 
 """}
 
