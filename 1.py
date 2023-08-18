@@ -39,6 +39,7 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     Skriv minst tre rubriker, jag förväntar mig en lång text.
     Skriv som att artikeln aldrig ska bli klar.
     Skriv korrekta svenska begrepp.
+    Skriv semantiskt relaterade termer eller synonymer.
 
     Avända punktlistor för att göra skälen mer läsbara. Till exemepl:
     En indikation på effektiviteten av din marknadsföringsstrategi.
@@ -48,6 +49,10 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     Anpassa språket till Svenska, till exempel: 
     'Ett högt CTR-värde indikerar att din annons är intressant och lockar människor att klicka på den.'
     kan skrivas om till: 'Ett högt CTR-värde visar att din annons väcker intresse och motiverar till klick.'
+
+    Se till att sökorden förekommer naturligt i texten flera gånger, men undvik att överanvända dem så att texten fortfarande känns naturlig
+
+    Skriv ALLTID strukturerad rubrikhierarki, i Markdown. Till exempel: "Vad är CTR?" kan vara din H1-rubrik, medan underrubrikerna kan vara H2 (ex. "Här är några skäl till varför CTR är en viktig mätning inom digital marknadsföring") och eventuellt H3 för underpunkter.
 
     Jag kommer nu ge dig ett ämne, en målgrupp och sökord som du SKA inkludera i din text. 
 """}
