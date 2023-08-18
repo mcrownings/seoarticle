@@ -52,6 +52,8 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
 
     Om du nämner "låg kvalitet" måste du Förtydliga vad du menar med "låg kvalitet" eller ge exempel.
 
+    Skriv värdefullt innehåll och att ge några exempel eller jämförelser för att ge läsaren en bättre förståelse.
+
     Skriv så att sökorden förekommer naturligt i texten flera gånger, men skriv så att texten fortfarande känns naturlig.
 
     Skriv ALLTID strukturerad rubrikhierarki, i Markdown. Till exempel: "Vad är CTR?" kan vara din H1-rubrik, medan underrubrikerna kan vara H2 (ex. "Här är några skäl till varför CTR är en viktig mätning inom digital marknadsföring") och eventuellt H3 för underpunkter.
