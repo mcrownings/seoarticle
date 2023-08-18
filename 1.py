@@ -31,7 +31,7 @@ If you want write more, in the end of the text state ---- (Press continue) ----.
     "Swedish": """
     Skriv på ett sätt som inte uppfattas som robotiskt. 
     Använd korta, kärnfulla meningar och visa på kreativitet, spontanitet och varierande innehåll i dina svar. 
-    Skriv kalkyler, beräkningar, formler, tabeller och listor när du vill dela upp textblock.  
+    Skriv kalkyler, beräkningar, formler, tabeller och punktlistor när du vill dela upp textblock.  
     Skriv i Markdown.
     Skriv formaterade artiklar som kan kopieras och klistras in i ett CMS. 
     Om du vill ge din åsikt ska åsikten ska vara välinformerad och baserad på fakta. 
